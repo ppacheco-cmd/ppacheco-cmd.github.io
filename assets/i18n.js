@@ -1,0 +1,581 @@
+/* Translations for the site: English (en-US), Portuguese (pt-PT), Spanish (es) and French (fr).
+   The pages carry English text plus data-i18n / data-i18n-attr keys; site.js swaps the text for the chosen language.
+   Mini-markup in values: **bold** and __italic__. {file} is replaced in c.cv.status.
+   The wording is gender-neutral on purpose, and "QA Engineer" is kept in English in every language.
+   Have a native speaker review the pt / es / fr text before relying on it. */
+(function (root) {
+  'use strict';
+  var LANGS = [
+  {
+    "code": "en",
+    "tag": "en-US",
+    "name": "English",
+    "short": "EN"
+  },
+  {
+    "code": "pt",
+    "tag": "pt-PT",
+    "name": "Português",
+    "short": "PT"
+  },
+  {
+    "code": "es",
+    "tag": "es",
+    "name": "Español",
+    "short": "ES"
+  },
+  {
+    "code": "fr",
+    "tag": "fr",
+    "name": "Français",
+    "short": "FR"
+  }
+];
+  var MONTHS = {
+  "pt": [
+    "jan.",
+    "fev.",
+    "mar.",
+    "abr.",
+    "mai.",
+    "jun.",
+    "jul.",
+    "ago.",
+    "set.",
+    "out.",
+    "nov.",
+    "dez."
+  ],
+  "es": [
+    "ene.",
+    "feb.",
+    "mar.",
+    "abr.",
+    "may.",
+    "jun.",
+    "jul.",
+    "ago.",
+    "sept.",
+    "oct.",
+    "nov.",
+    "dic."
+  ],
+  "fr": [
+    "janv.",
+    "févr.",
+    "mars",
+    "avr.",
+    "mai",
+    "juin",
+    "juil.",
+    "août",
+    "sept.",
+    "oct.",
+    "nov.",
+    "déc."
+  ]
+};
+  var DICT = {
+  "en": {
+    "c.navResume": "Resume",
+    "c.navAsk": "Ask",
+    "c.role": "QA Engineer",
+    "c.help.title": "What does a QA engineer do?",
+    "c.help.intro": "A QA (quality assurance) engineer makes sure software works as intended before it reaches real users. Typically they:",
+    "c.help.b1": "turn requirements into clear acceptance criteria and test cases;",
+    "c.help.b2": "test by hand and with automation, and re-test after every change;",
+    "c.help.b3": "find, report and follow up on bugs until they are fixed;",
+    "c.help.b4": "work with developers, designers and product owners to catch problems early.",
+    "i.cvIdle": "Download CV (PDF)",
+    "c.cv.done": "Download started",
+    "i.email": "Email",
+    "i.askTitle": "Ask about my background",
+    "i.askSub": "Pick a question. The answers are written from my resume.",
+    "i.askHint": "Select a question above to see the answer.",
+    "c.brand": "PP: Paulo Pacheco, home",
+    "c.navLabel": "Main",
+    "c.lang": "Language",
+    "c.help.label": "What does a QA engineer do?",
+    "i.groupLabel": "Questions about my background",
+    "r.cvIdle": "Download PDF",
+    "r.h.summary": "Summary",
+    "r.summary": "QA Engineer with 2 years in QA and 3+ years of prior backend engineering, with a healthcare software background. Experienced in test design and execution (functional, exploratory, E2E regression), shift-left quality, and building test automation frameworks and AI-driven workflows to automate repetitive QA work. Driven by the opportunity to deliver high-quality, safe services to individuals through better software.",
+    "r.h.education": "Education",
+    "r.edu.degree": "Integrated MSc in Informatics Engineering",
+    "r.edu.school": "University of Minho, Braga, Portugal",
+    "r.edu.s1t": "Specialization 1: Software Systems Engineering",
+    "r.edu.s1d": "Focused on software specification, architecture, design, and software testing.",
+    "r.edu.s2t": "Specialization 2: Data Engineering",
+    "r.edu.s2d": "Focused on designing and building systems to collect and analyse raw data from multiple sources.",
+    "r.h.experience": "Professional Experience",
+    "r.via": "(via Quanteam)",
+    "r.current": "Current",
+    "r.tools": "Tools",
+    "r.eu.desc": "Euronext is the leading pan-European stock exchange, connecting diverse economies to global capital markets.",
+    "r.eu.b1": "**Developed a multi-agent system to automate QA workflows:** Built a pipeline of LLM-based AI agents: one to parse Epics and documentation into structured runbooks, a second to generate __Gherkin__ scenarios for each test case, and a third to format data for seamless __XRay__ importing, reducing manual test-design effort.",
+    "r.eu.b2": "**Authored and validated runbooks:** Translated product documentation into acceptance criteria, test cases and test scenarios, collaborating directly with the Test Manager for formal validation and sign-off.",
+    "r.eu.b3": "**Executed test plans and evidence compliance:** Managed active test cycles and documented execution evidence to ensure software quality. Collaborate with developers, product managers and peers to ensure high-quality software delivery.",
+    "r.dur.qa": "1 yr 8 mos",
+    "r.pq.desc": "Real-World Evidence company that collects, integrates, and analyses data on the outcomes of care.",
+    "r.pq.b1": "**Introduced E2E test automation from zero**, designing and building the framework with Playwright and GitHub Actions: an automated E2E regression suite covering ~60% of critical user flows, run nightly.",
+    "r.pq.b2": "**Shift left testing:** reviewed acceptance criteria and tickets with the Product Owner, Designer, and Tech Lead before stories enter the sprint, reducing ambiguity and rework.",
+    "r.pq.b3": "**Adopted Playwright MCP** to drive exploratory browser testing and generate tests from acceptance criteria and test cases, shortening the path from spec to working tests.",
+    "r.pq.b4": "**Investigated production issues** with __Sentry__ and __Grafana__; read the codebase to provide preliminary root-cause analysis alongside each bug report, aiming to reduce developer triage time.",
+    "r.pq.b5": "**Sole QA Engineer** in the team: wrote acceptance criteria and test cases, performed manual functional, exploratory and UAT testing, and reported and tracked defects in Jira.",
+    "r.pq.b6": "Served as a product support member, assisting teams with troubleshooting.",
+    "r.role.be": "Software Engineer - Backend",
+    "r.dur.be": "3 yrs 7 mos",
+    "r.pb.desc": "Real-World Evidence company, collecting, integrating and analysing data on the outcomes of care.",
+    "r.pb.b1": "**Developed the backend** of the patient-centric platform alongside the team, using Django, Python, Pytest, and PostgreSQL.",
+    "r.pb.b2": "**Designed, implemented and tested APIs** to collect and retrieve patient-reported and clinician-reported outcome measures within a real-world evidence context, using Pytest unit tests.",
+    "r.pb.b3": "**Owned bug fixes** across the codebase given my in-depth knowledge of it, shipping quick fixes to clients while adhering to CI/CD principles.",
+    "r.pb.b4": "**Engaged customers and product managers** to better understand pain points and shape product improvements.",
+    "r.pb.b5": "**Collaborated with the Delivery team** on workflow changes that helped them ship features to clients faster.",
+    "r.pb.b6": "**Proposed, built, and documented internal tools** to streamline team workflows; these efforts contributed to a ~15% boost in delivery speed over two years.",
+    "r.h.projects": "Projects",
+    "r.pr.title": "Self-service Kiosk-based Anamnesis System for Emergency Departments",
+    "r.pr.thesis": "Thesis project:",
+    "r.pr.thesisLink": "MSc thesis",
+    "r.pr.desc": "Built a self-service kiosk to assist emergency department physicians with patient anamnesis at Centro Hospitalar Universitário de São João (CHUSJ), Porto.",
+    "r.pr.b1": "**Led the technical implementation and full-stack development:** built the React frontend used by physicians and a Node.js + Express REST API backed by MySQL.",
+    "r.pr.b2": "**Built a standalone Android app in Java** (Android Studio) for patients to enter clinical data, including modules to read personal data from the citizen card and to capture blood pressure, oxygen saturation, and temperature from Bluetooth-connected biometric sensors.",
+    "r.pr.b3": "**Reduced anamnesis process time by ~16%** in field tests conducted at CHUSJ.",
+    "r.h.publications": "Publications",
+    "r.h.languages": "Languages & Certifications",
+    "r.lang.label": "Languages:",
+    "r.lang.value": "Portuguese (Native), English - B2",
+    "r.cert.label": "Certifications:",
+    "c.theme.toDark": "Switch to dark mode",
+    "c.theme.toLight": "Switch to light mode",
+    "c.cv.status": "Download started: {file}",
+    "i.title": "Paulo Pacheco",
+    "i.desc": "Paulo Pacheco, QA Engineer. Download my CV, read my resume or visit my GitHub.",
+    "i.more": "See the full resume",
+    "r.title": "Resume - Paulo Pacheco",
+    "r.desc": "Resume of Paulo Pacheco, QA Engineer: test automation, shift-left quality and AI-driven QA workflows, with a healthcare software background.",
+    "qa": [
+      {
+        "id": "who",
+        "q": "In one line, who are you?",
+        "a": "QA Engineer with 2 years in QA and 3+ years of prior backend engineering, with a healthcare software background. I focus on shift-left quality, test automation frameworks and AI-driven workflows that automate repetitive QA work."
+      },
+      {
+        "id": "qa",
+        "q": "What QA experience do you have?",
+        "a": "Two years in QA. At Promptly Health (Nov 2024 - Jun 2026) I was the sole QA Engineer: I wrote acceptance criteria and test cases, performed manual functional, exploratory and UAT testing, and reported and tracked defects in Jira.\n\nSince July 2026 I'm a QA Engineer at Euronext (via Quanteam), where I translate product documentation into acceptance criteria, test cases and test scenarios, get them validated and signed off by the Test Manager, and execute test cycles with documented evidence for compliance."
+      },
+      {
+        "id": "automation",
+        "q": "Do you have test automation experience?",
+        "a": "Yes. At Promptly Health I introduced E2E test automation from zero: I designed and built the framework with Playwright and GitHub Actions. It runs nightly as an automated E2E regression suite covering ~60% of critical user flows.\n\nI also adopted Playwright MCP to drive exploratory browser testing and to generate tests from acceptance criteria and test cases."
+      },
+      {
+        "id": "ai",
+        "q": "How do you use AI in your work?",
+        "a": "At Euronext I built a multi-agent LLM pipeline for QA: one agent parses Epics and documentation into structured runbooks, a second generates Gherkin scenarios for each test case, and a third formats the data for XRay import. It reduces manual test-design effort.\n\nAt Promptly Health I used Playwright MCP and Claude Code for exploratory testing and test generation."
+      },
+      {
+        "id": "health",
+        "q": "What is your healthcare background?",
+        "a": "Over five years at Promptly Health, a real-world evidence company that collects, integrates and analyses data on the outcomes of care: first as a backend engineer (May 2021 - Nov 2024), building APIs for patient-reported and clinician-reported outcome measures, then as a QA Engineer (Nov 2024 - Jun 2026).\n\nMy MSc thesis was a self-service kiosk that helps emergency department physicians with patient anamnesis at CHUSJ in Porto, and my publications include two IEEE conference papers on health kiosks."
+      },
+      {
+        "id": "api",
+        "q": "Have you worked with APIs?",
+        "a": "Yes. As a backend engineer I designed, implemented and tested REST APIs in Python and Django, with Pytest unit tests and a TDD approach. I have also used Postman.\n\nAs a QA Engineer I investigated production issues with Sentry and Grafana, reading the codebase to add preliminary root-cause analysis to each bug report."
+      },
+      {
+        "id": "mobile",
+        "q": "Do you have mobile experience?",
+        "a": "I haven't tested mobile apps professionally. I did build one: a standalone Android app in Java, using Android Studio, for my MSc thesis. Patients enter clinical data in it, and it includes modules to read personal data from the citizen card and to capture blood pressure, oxygen saturation and temperature from Bluetooth-connected biometric sensors."
+      },
+      {
+        "id": "why",
+        "q": "Why did you move from backend to QA?",
+        "a": "After 3+ years building backend features, I wanted to focus on quality and user impact rather than feature delivery, and I had grown to enjoy bug investigation and test design more than building. The company also had a QA gap to fill, which made the timing right.\n\nMy engineering background continues to inform the work: I read source code during investigations, build test automation, and write reports tailored to developers."
+      },
+      {
+        "id": "education",
+        "q": "Education, certification and languages?",
+        "a": "Integrated MSc in Informatics Engineering at the University of Minho (2015 - 2021), with specializations in Software Systems Engineering (including software testing) and Data Engineering.\n\nISTQB Certified Tester Foundation Level 4.0. Languages: Portuguese (native) and English (B2)."
+      }
+    ]
+  },
+  "pt": {
+    "c.brand": "PP: Paulo Pacheco, página inicial",
+    "c.navLabel": "Navegação principal",
+    "c.navResume": "Currículo",
+    "c.navAsk": "Perguntas",
+    "c.lang": "Idioma",
+    "c.theme.toDark": "Mudar para o modo escuro",
+    "c.theme.toLight": "Mudar para o modo claro",
+    "c.role": "QA Engineer",
+    "c.help.label": "O que faz um QA Engineer?",
+    "c.help.title": "O que faz um QA Engineer?",
+    "c.help.intro": "Um QA Engineer (garantia de qualidade) assegura que o software funciona como previsto antes de chegar aos utilizadores. Normalmente:",
+    "c.help.b1": "transforma requisitos em critérios de aceitação e casos de teste claros;",
+    "c.help.b2": "testa manualmente e com automação, e volta a testar após cada alteração;",
+    "c.help.b3": "encontra, reporta e acompanha os bugs até estarem corrigidos;",
+    "c.help.b4": "trabalha com programadores, designers e product owners para detetar problemas cedo.",
+    "c.cv.done": "Download iniciado",
+    "c.cv.status": "Download iniciado: {file}",
+    "i.title": "Paulo Pacheco",
+    "i.desc": "Paulo Pacheco, QA Engineer. Descarregue o meu CV, leia o meu currículo ou visite o meu GitHub.",
+    "i.cvIdle": "Descarregar CV (PDF, em inglês)",
+    "i.email": "E-mail",
+    "i.askTitle": "Pergunte sobre o meu percurso",
+    "i.askSub": "Escolha uma pergunta. As respostas baseiam-se no meu currículo.",
+    "i.groupLabel": "Perguntas sobre o meu percurso",
+    "i.askHint": "Selecione uma pergunta acima para ver a resposta.",
+    "i.more": "Ver o currículo completo",
+    "r.title": "Currículo - Paulo Pacheco",
+    "r.desc": "Currículo de Paulo Pacheco, QA Engineer: automação de testes, qualidade desde o início (shift-left) e fluxos de QA com IA, com experiência em software de saúde.",
+    "r.cvIdle": "Descarregar PDF (em inglês)",
+    "r.h.summary": "Resumo",
+    "r.h.education": "Formação académica",
+    "r.h.experience": "Experiência profissional",
+    "r.h.projects": "Projetos",
+    "r.h.publications": "Publicações",
+    "r.h.languages": "Idiomas e certificações",
+    "r.summary": "QA Engineer com 2 anos de experiência em QA e mais de 3 anos anteriores em engenharia de backend, com experiência na área do software de saúde. Experiência em conceção e execução de testes (funcionais, exploratórios, regressão E2E), qualidade desde o início (shift-left) e construção de frameworks de automação de testes e de fluxos de trabalho com IA para automatizar tarefas repetitivas de QA. A minha motivação é entregar serviços seguros e de elevada qualidade às pessoas através de melhor software.",
+    "r.edu.degree": "Mestrado Integrado em Engenharia Informática",
+    "r.edu.school": "Universidade do Minho, Braga, Portugal",
+    "r.edu.s1t": "Especialização 1: Engenharia de Sistemas de Software",
+    "r.edu.s1d": "Foco em especificação, arquitetura e conceção de software, e em testes de software.",
+    "r.edu.s2t": "Especialização 2: Engenharia de Dados",
+    "r.edu.s2d": "Foco na conceção e construção de sistemas para recolher e analisar dados em bruto de várias fontes.",
+    "r.via": "(através da Quanteam)",
+    "r.role.be": "Software Engineer - Backend",
+    "r.tools": "Ferramentas",
+    "r.current": "Atual",
+    "r.dur.qa": "1 ano e 8 meses",
+    "r.dur.be": "3 anos e 7 meses",
+    "r.eu.desc": "A Euronext é a principal bolsa de valores pan-europeia, que liga economias diversas aos mercados de capitais globais.",
+    "r.eu.b1": "**Desenvolvimento de um sistema multiagente para automatizar fluxos de trabalho de QA:** Construção de uma pipeline de agentes de IA baseados em LLM: um para converter Epics e documentação em runbooks estruturados, um segundo para gerar cenários __Gherkin__ para cada caso de teste e um terceiro para formatar os dados para uma importação fluida no __XRay__, reduzindo o esforço manual de conceção de testes.",
+    "r.eu.b2": "**Redação e validação de runbooks:** Tradução da documentação de produto em critérios de aceitação, casos de teste e cenários de teste, em colaboração direta com o Test Manager para validação e aprovação formais.",
+    "r.eu.b3": "**Execução de planos de teste e conformidade de evidências:** Gestão de ciclos de teste ativos e documentação das evidências de execução para garantir a qualidade do software. Colaboração com programadores, product managers e colegas para assegurar a entrega de software de elevada qualidade.",
+    "r.pq.desc": "Empresa de Real-World Evidence que recolhe, integra e analisa dados sobre os resultados dos cuidados de saúde.",
+    "r.pq.b1": "**Introdução da automação de testes E2E a partir do zero**, com conceção e construção da framework com Playwright e GitHub Actions: uma suite de regressão E2E automatizada que cobre ~60% dos fluxos críticos de utilizador, executada todas as noites.",
+    "r.pq.b2": "**Testes shift-left:** revisão de critérios de aceitação e tickets com o Product Owner, o Designer e o Tech Lead antes de as histórias entrarem no sprint, reduzindo ambiguidades e retrabalho.",
+    "r.pq.b3": "**Adoção do Playwright MCP** para conduzir testes exploratórios no browser e gerar testes a partir de critérios de aceitação e casos de teste, encurtando o caminho entre a especificação e testes funcionais.",
+    "r.pq.b4": "**Investigação de problemas em produção** com __Sentry__ e __Grafana__; leitura do código para fornecer uma análise preliminar da causa raiz junto de cada relatório de bug, com o objetivo de reduzir o tempo de triagem dos programadores.",
+    "r.pq.b5": "**Única pessoa de QA** na equipa: redação de critérios de aceitação e casos de teste, execução de testes manuais funcionais, exploratórios e UAT, e registo e acompanhamento de defeitos no Jira.",
+    "r.pq.b6": "Apoio ao produto, ajudando as equipas na resolução de problemas.",
+    "r.pb.desc": "Empresa de Real-World Evidence, que recolhe, integra e analisa dados sobre os resultados dos cuidados de saúde.",
+    "r.pb.b1": "**Desenvolvimento do backend** da plataforma centrada no doente, em conjunto com a equipa, com Django, Python, Pytest e PostgreSQL.",
+    "r.pb.b2": "**Conceção, implementação e teste de APIs** para recolher e consultar medidas de resultados reportadas por doentes e por clínicos num contexto de real-world evidence, com testes unitários em Pytest.",
+    "r.pb.b3": "**Responsabilidade pela correção de bugs** em todo o código, dado o meu conhecimento profundo do mesmo, entregando correções rápidas aos clientes em conformidade com os princípios de CI/CD.",
+    "r.pb.b4": "**Contacto com clientes e product managers** para compreender melhor as dificuldades e orientar melhorias do produto.",
+    "r.pb.b5": "**Colaboração com a equipa de Delivery** em alterações de processo que os ajudaram a entregar funcionalidades aos clientes mais depressa.",
+    "r.pb.b6": "**Proposta, construção e documentação de ferramentas internas** para simplificar os fluxos de trabalho da equipa; estes esforços contribuíram para um aumento de ~15% na velocidade de entrega ao longo de dois anos.",
+    "r.pr.title": "Sistema de anamnese em quiosque self-service para serviços de urgência",
+    "r.pr.thesis": "Projeto de dissertação:",
+    "r.pr.thesisLink": "Dissertação de mestrado",
+    "r.pr.desc": "Construção de um quiosque self-service para apoiar os médicos do serviço de urgência na anamnese dos doentes, no Centro Hospitalar Universitário de São João (CHUSJ), no Porto.",
+    "r.pr.b1": "**Liderança da implementação técnica e do desenvolvimento full-stack:** construção do frontend em React usado pelos médicos e de uma API REST em Node.js + Express com MySQL.",
+    "r.pr.b2": "**Construção de uma app Android autónoma em Java** (Android Studio) para os doentes introduzirem dados clínicos, incluindo módulos para ler dados pessoais do Cartão de Cidadão e para captar pressão arterial, saturação de oxigénio e temperatura a partir de sensores biométricos ligados por Bluetooth.",
+    "r.pr.b3": "**Redução em ~16% do tempo do processo de anamnese** em testes de campo realizados no CHUSJ.",
+    "r.lang.label": "Idiomas:",
+    "r.lang.value": "Português (nativo), Inglês - B2",
+    "r.cert.label": "Certificações:",
+    "qa": [
+      {
+        "id": "who",
+        "q": "Numa frase, quem é?",
+        "a": "QA Engineer com 2 anos de QA e mais de 3 anos anteriores em engenharia de backend, com experiência em software de saúde. Concentro-me em qualidade desde o início (shift-left), em frameworks de automação de testes e em fluxos de trabalho com IA que automatizam tarefas repetitivas de QA."
+      },
+      {
+        "id": "qa",
+        "q": "Que experiência de QA tem?",
+        "a": "Dois anos em QA. Na Promptly Health (nov. 2024 - jun. 2026) fui a única pessoa de QA da equipa: redigi critérios de aceitação e casos de teste, executei testes manuais funcionais, exploratórios e UAT, e registei e acompanhei defeitos no Jira.\n\nDesde julho de 2026 sou QA Engineer na Euronext (através da Quanteam), onde traduzo a documentação de produto em critérios de aceitação, casos de teste e cenários de teste, obtenho a sua validação e aprovação pelo Test Manager e executo ciclos de teste com evidências documentadas para conformidade."
+      },
+      {
+        "id": "automation",
+        "q": "Tem experiência em automação de testes?",
+        "a": "Sim. Na Promptly Health introduzi a automação de testes E2E a partir do zero: concebi e construí a framework com Playwright e GitHub Actions. Corre todas as noites como uma suite de regressão E2E automatizada que cobre ~60% dos fluxos críticos de utilizador.\n\nAdotei também o Playwright MCP para conduzir testes exploratórios no browser e para gerar testes a partir de critérios de aceitação e casos de teste."
+      },
+      {
+        "id": "ai",
+        "q": "Como usa a IA no seu trabalho?",
+        "a": "Na Euronext construí uma pipeline multiagente com LLM para QA: um agente converte Epics e documentação em runbooks estruturados, um segundo gera cenários Gherkin para cada caso de teste e um terceiro formata os dados para importação no XRay. Reduz o esforço manual de conceção de testes.\n\nNa Promptly Health usei o Playwright MCP e o Claude Code para testes exploratórios e geração de testes."
+      },
+      {
+        "id": "health",
+        "q": "Qual é a sua experiência na área da saúde?",
+        "a": "Mais de cinco anos na Promptly Health, uma empresa de real-world evidence que recolhe, integra e analisa dados sobre os resultados dos cuidados de saúde: primeiro em engenharia de backend (mai. 2021 - nov. 2024), a construir APIs para medidas de resultados reportadas por doentes e por clínicos, e depois como QA Engineer (nov. 2024 - jun. 2026).\n\nA minha dissertação de mestrado foi um quiosque self-service que ajuda os médicos do serviço de urgência na anamnese dos doentes no CHUSJ, no Porto, e as minhas publicações incluem dois artigos de conferência da IEEE sobre quiosques de saúde."
+      },
+      {
+        "id": "api",
+        "q": "Já trabalhou com APIs?",
+        "a": "Sim. Em engenharia de backend concebi, implementei e testei APIs REST em Python e Django, com testes unitários em Pytest e uma abordagem TDD. Também já usei o Postman.\n\nComo QA Engineer investiguei problemas em produção com Sentry e Grafana, lendo o código para acrescentar uma análise preliminar da causa raiz a cada relatório de bug."
+      },
+      {
+        "id": "mobile",
+        "q": "Tem experiência com mobile?",
+        "a": "Não testei aplicações móveis a nível profissional. Mas construí uma: uma app Android autónoma em Java, com o Android Studio, para a minha dissertação de mestrado. Os doentes introduzem nela dados clínicos, e inclui módulos para ler dados pessoais do Cartão de Cidadão e para captar pressão arterial, saturação de oxigénio e temperatura a partir de sensores biométricos ligados por Bluetooth."
+      },
+      {
+        "id": "why",
+        "q": "Porque passou do backend para QA?",
+        "a": "Depois de mais de 3 anos a desenvolver funcionalidades de backend, quis concentrar-me na qualidade e no impacto para o utilizador, em vez de na entrega de funcionalidades, e tinha passado a gostar mais de investigar bugs e conceber testes do que de construir. A empresa tinha ainda uma lacuna em QA para preencher, o que tornou o momento certo.\n\nA minha formação em engenharia continua a influenciar o trabalho: leio código durante as investigações, construo automação de testes e escrevo relatórios adaptados aos programadores."
+      },
+      {
+        "id": "education",
+        "q": "Formação, certificação e idiomas?",
+        "a": "Mestrado Integrado em Engenharia Informática na Universidade do Minho (2015 - 2021), com especializações em Engenharia de Sistemas de Software (incluindo testes de software) e em Engenharia de Dados.\n\nISTQB Certified Tester Foundation Level 4.0. Idiomas: português (nativo) e inglês (B2)."
+      }
+    ]
+  },
+  "es": {
+    "c.brand": "PP: Paulo Pacheco, inicio",
+    "c.navLabel": "Navegación principal",
+    "c.navResume": "Currículum",
+    "c.navAsk": "Preguntas",
+    "c.lang": "Idioma",
+    "c.theme.toDark": "Cambiar a modo oscuro",
+    "c.theme.toLight": "Cambiar a modo claro",
+    "c.role": "QA Engineer",
+    "c.help.label": "¿Qué hace un QA Engineer?",
+    "c.help.title": "¿Qué hace un QA Engineer?",
+    "c.help.intro": "Un QA Engineer (aseguramiento de la calidad) se asegura de que el software funcione como se espera antes de llegar a los usuarios reales. Normalmente:",
+    "c.help.b1": "convierte los requisitos en criterios de aceptación y casos de prueba claros;",
+    "c.help.b2": "prueba manualmente y con automatización, y vuelve a probar tras cada cambio;",
+    "c.help.b3": "encuentra, reporta y da seguimiento a los errores hasta que se corrigen;",
+    "c.help.b4": "trabaja con desarrolladores, diseñadores y product owners para detectar los problemas pronto.",
+    "c.cv.done": "Descarga iniciada",
+    "c.cv.status": "Descarga iniciada: {file}",
+    "i.title": "Paulo Pacheco",
+    "i.desc": "Paulo Pacheco, QA Engineer. Descarga mi CV, lee mi currículum o visita mi GitHub.",
+    "i.cvIdle": "Descargar CV (PDF, en inglés)",
+    "i.email": "Correo electrónico",
+    "i.askTitle": "Pregunta sobre mi trayectoria",
+    "i.askSub": "Elige una pregunta. Las respuestas se basan en mi currículum.",
+    "i.groupLabel": "Preguntas sobre mi trayectoria",
+    "i.askHint": "Selecciona una pregunta arriba para ver la respuesta.",
+    "i.more": "Ver el currículum completo",
+    "r.title": "Currículum - Paulo Pacheco",
+    "r.desc": "Currículum de Paulo Pacheco, QA Engineer: automatización de pruebas, calidad desde el inicio (shift-left) y flujos de QA con IA, con experiencia en software de salud.",
+    "r.cvIdle": "Descargar PDF (en inglés)",
+    "r.h.summary": "Resumen",
+    "r.h.education": "Formación",
+    "r.h.experience": "Experiencia profesional",
+    "r.h.projects": "Proyectos",
+    "r.h.publications": "Publicaciones",
+    "r.h.languages": "Idiomas y certificaciones",
+    "r.summary": "QA Engineer con 2 años de experiencia en QA y más de 3 años previos en ingeniería de backend, con experiencia en el ámbito del software de salud. Experiencia en diseño y ejecución de pruebas (funcionales, exploratorias, regresión E2E), calidad desde el inicio (shift-left) y creación de frameworks de automatización de pruebas y flujos de trabajo con IA para automatizar el trabajo repetitivo de QA. Mi motivación es ofrecer servicios seguros y de alta calidad a las personas a través de mejor software.",
+    "r.edu.degree": "Máster integrado en Ingeniería Informática",
+    "r.edu.school": "Universidad de Minho, Braga, Portugal",
+    "r.edu.s1t": "Especialización 1: Ingeniería de Sistemas de Software",
+    "r.edu.s1d": "Centrada en la especificación, la arquitectura y el diseño de software, y en las pruebas de software.",
+    "r.edu.s2t": "Especialización 2: Ingeniería de Datos",
+    "r.edu.s2d": "Centrada en el diseño y la construcción de sistemas para recopilar y analizar datos sin procesar de múltiples fuentes.",
+    "r.via": "(a través de Quanteam)",
+    "r.role.be": "Software Engineer - Backend",
+    "r.tools": "Herramientas",
+    "r.current": "Actualidad",
+    "r.dur.qa": "1 año y 8 meses",
+    "r.dur.be": "3 años y 7 meses",
+    "r.eu.desc": "Euronext es la principal bolsa paneuropea, que conecta economías diversas con los mercados de capitales globales.",
+    "r.eu.b1": "**Desarrollo de un sistema multiagente para automatizar flujos de trabajo de QA:** Construcción de un pipeline de agentes de IA basados en LLM: uno para convertir Epics y documentación en runbooks estructurados, un segundo para generar escenarios __Gherkin__ para cada caso de prueba y un tercero para dar formato a los datos y poder importarlos sin fricciones en __XRay__, reduciendo el esfuerzo manual de diseño de pruebas.",
+    "r.eu.b2": "**Redacción y validación de runbooks:** Traducción de la documentación de producto en criterios de aceptación, casos de prueba y escenarios de prueba, colaborando directamente con el Test Manager para su validación y aprobación formales.",
+    "r.eu.b3": "**Ejecución de planes de prueba y cumplimiento de evidencias:** Gestión de ciclos de prueba activos y documentación de las evidencias de ejecución para garantizar la calidad del software. Colaboración con desarrolladores, product managers y compañeros para asegurar una entrega de software de alta calidad.",
+    "r.pq.desc": "Empresa de Real-World Evidence que recopila, integra y analiza datos sobre los resultados de la atención sanitaria.",
+    "r.pq.b1": "**Introducción de la automatización de pruebas E2E desde cero**, diseñando y construyendo el framework con Playwright y GitHub Actions: una suite de regresión E2E automatizada que cubre ~60% de los flujos críticos de usuario, ejecutada cada noche.",
+    "r.pq.b2": "**Pruebas shift-left:** revisión de criterios de aceptación y tickets con el Product Owner, el Designer y el Tech Lead antes de que las historias entren en el sprint, reduciendo ambigüedades y retrabajo.",
+    "r.pq.b3": "**Adopción de Playwright MCP** para dirigir pruebas exploratorias en el navegador y generar pruebas a partir de criterios de aceptación y casos de prueba, acortando el camino de la especificación a pruebas funcionando.",
+    "r.pq.b4": "**Investigación de incidencias en producción** con __Sentry__ y __Grafana__; lectura del código para aportar un análisis preliminar de la causa raíz junto a cada informe de error, con el objetivo de reducir el tiempo de triaje de los desarrolladores.",
+    "r.pq.b5": "**Única persona de QA** en el equipo: redacción de criterios de aceptación y casos de prueba, realización de pruebas manuales funcionales, exploratorias y UAT, y registro y seguimiento de defectos en Jira.",
+    "r.pq.b6": "Apoyo al producto, ayudando a los equipos con la resolución de problemas.",
+    "r.pb.desc": "Empresa de Real-World Evidence, que recopila, integra y analiza datos sobre los resultados de la atención sanitaria.",
+    "r.pb.b1": "**Desarrollo del backend** de la plataforma centrada en el paciente junto con el equipo, usando Django, Python, Pytest y PostgreSQL.",
+    "r.pb.b2": "**Diseño, implementación y prueba de APIs** para recopilar y consultar medidas de resultados notificadas por pacientes y por profesionales clínicos en un contexto de real-world evidence, con pruebas unitarias en Pytest.",
+    "r.pb.b3": "**Responsabilidad de la corrección de errores** en todo el código, dado mi conocimiento profundo del mismo, entregando correcciones rápidas a los clientes respetando los principios de CI/CD.",
+    "r.pb.b4": "**Contacto con clientes y product managers** para comprender mejor los puntos de dolor y orientar las mejoras del producto.",
+    "r.pb.b5": "**Colaboración con el equipo de Delivery** en cambios de flujo de trabajo que les ayudaron a entregar funcionalidades a los clientes más rápido.",
+    "r.pb.b6": "**Propuesta, construcción y documentación de herramientas internas** para agilizar los flujos de trabajo del equipo; estos esfuerzos contribuyeron a un aumento de ~15% en la velocidad de entrega a lo largo de dos años.",
+    "r.pr.title": "Sistema de anamnesis en quiosco de autoservicio para servicios de urgencias",
+    "r.pr.thesis": "Proyecto de tesis:",
+    "r.pr.thesisLink": "Tesis de máster",
+    "r.pr.desc": "Construcción de un quiosco de autoservicio para ayudar a los médicos de urgencias con la anamnesis de los pacientes en el Centro Hospitalar Universitário de São João (CHUSJ), en Oporto.",
+    "r.pr.b1": "**Liderazgo de la implementación técnica y del desarrollo full-stack:** construcción del frontend en React que usan los médicos y de una API REST en Node.js + Express con MySQL.",
+    "r.pr.b2": "**Construcción de una app Android independiente en Java** (Android Studio) para que los pacientes introduzcan datos clínicos, con módulos para leer datos personales de la tarjeta de ciudadano y para captar la tensión arterial, la saturación de oxígeno y la temperatura desde sensores biométricos conectados por Bluetooth.",
+    "r.pr.b3": "**Reducción de ~16% del tiempo del proceso de anamnesis** en pruebas de campo realizadas en el CHUSJ.",
+    "r.lang.label": "Idiomas:",
+    "r.lang.value": "Portugués (nativo), inglés - B2",
+    "r.cert.label": "Certificaciones:",
+    "qa": [
+      {
+        "id": "who",
+        "q": "En una frase, ¿quién eres?",
+        "a": "QA Engineer con 2 años en QA y más de 3 años previos en ingeniería de backend, con experiencia en software de salud. Me centro en la calidad desde el inicio (shift-left), en frameworks de automatización de pruebas y en flujos de trabajo con IA que automatizan el trabajo repetitivo de QA."
+      },
+      {
+        "id": "qa",
+        "q": "¿Qué experiencia tienes en QA?",
+        "a": "Dos años en QA. En Promptly Health (nov. 2024 - jun. 2026) fui la única persona de QA del equipo: redacté criterios de aceptación y casos de prueba, realicé pruebas manuales funcionales, exploratorias y UAT, y registré y di seguimiento a defectos en Jira.\n\nDesde julio de 2026 soy QA Engineer en Euronext (a través de Quanteam), donde traduzco la documentación de producto en criterios de aceptación, casos de prueba y escenarios de prueba, consigo que los valide y apruebe el Test Manager, y ejecuto ciclos de prueba con evidencias documentadas para el cumplimiento normativo."
+      },
+      {
+        "id": "automation",
+        "q": "¿Tienes experiencia en automatización de pruebas?",
+        "a": "Sí. En Promptly Health introduje la automatización de pruebas E2E desde cero: diseñé y construí el framework con Playwright y GitHub Actions. Se ejecuta cada noche como una suite de regresión E2E automatizada que cubre ~60% de los flujos críticos de usuario.\n\nAdopté también Playwright MCP para dirigir pruebas exploratorias en el navegador y para generar pruebas a partir de criterios de aceptación y casos de prueba."
+      },
+      {
+        "id": "ai",
+        "q": "¿Cómo usas la IA en tu trabajo?",
+        "a": "En Euronext construí un pipeline multiagente con LLM para QA: un agente convierte Epics y documentación en runbooks estructurados, un segundo genera escenarios Gherkin para cada caso de prueba y un tercero da formato a los datos para importarlos en XRay. Reduce el esfuerzo manual de diseño de pruebas.\n\nEn Promptly Health usé Playwright MCP y Claude Code para pruebas exploratorias y generación de pruebas."
+      },
+      {
+        "id": "health",
+        "q": "¿Cuál es tu trayectoria en el ámbito sanitario?",
+        "a": "Más de cinco años en Promptly Health, una empresa de real-world evidence que recopila, integra y analiza datos sobre los resultados de la atención sanitaria: primero en ingeniería de backend (may. 2021 - nov. 2024), construyendo APIs para medidas de resultados notificadas por pacientes y por profesionales clínicos, y después como QA Engineer (nov. 2024 - jun. 2026).\n\nMi tesis de máster fue un quiosco de autoservicio que ayuda a los médicos de urgencias con la anamnesis de los pacientes en el CHUSJ, en Oporto, y mis publicaciones incluyen dos artículos de congreso del IEEE sobre quioscos de salud."
+      },
+      {
+        "id": "api",
+        "q": "¿Has trabajado con APIs?",
+        "a": "Sí. En ingeniería de backend diseñé, implementé y probé APIs REST en Python y Django, con pruebas unitarias en Pytest y un enfoque TDD. También he usado Postman.\n\nComo QA Engineer investigué incidencias en producción con Sentry y Grafana, leyendo el código para añadir un análisis preliminar de la causa raíz a cada informe de error."
+      },
+      {
+        "id": "mobile",
+        "q": "¿Tienes experiencia con móvil?",
+        "a": "No he probado aplicaciones móviles de forma profesional. Sí construí una: una app Android independiente en Java, con Android Studio, para mi tesis de máster. Los pacientes introducen en ella datos clínicos, e incluye módulos para leer datos personales de la tarjeta de ciudadano y para captar la tensión arterial, la saturación de oxígeno y la temperatura desde sensores biométricos conectados por Bluetooth."
+      },
+      {
+        "id": "why",
+        "q": "¿Por qué pasaste del backend a QA?",
+        "a": "Tras más de 3 años desarrollando funcionalidades de backend, quise centrarme en la calidad y en el impacto para el usuario en lugar de en la entrega de funcionalidades, y había llegado a disfrutar más investigando errores y diseñando pruebas que construyendo. La empresa también tenía un hueco de QA que cubrir, lo que hizo que el momento fuera el adecuado.\n\nMi formación en ingeniería sigue influyendo en el trabajo: leo código durante las investigaciones, construyo automatización de pruebas y escribo informes adaptados a los desarrolladores."
+      },
+      {
+        "id": "education",
+        "q": "¿Formación, certificación e idiomas?",
+        "a": "Máster integrado en Ingeniería Informática por la Universidad de Minho (2015 - 2021), con especializaciones en Ingeniería de Sistemas de Software (incluidas las pruebas de software) y en Ingeniería de Datos.\n\nISTQB Certified Tester Foundation Level 4.0. Idiomas: portugués (nativo) e inglés (B2)."
+      }
+    ]
+  },
+  "fr": {
+    "c.brand": "PP : Paulo Pacheco, accueil",
+    "c.navLabel": "Navigation principale",
+    "c.navResume": "CV",
+    "c.navAsk": "Questions",
+    "c.lang": "Langue",
+    "c.theme.toDark": "Passer en mode sombre",
+    "c.theme.toLight": "Passer en mode clair",
+    "c.role": "QA Engineer",
+    "c.help.label": "Que fait un QA Engineer ?",
+    "c.help.title": "Que fait un QA Engineer ?",
+    "c.help.intro": "Un QA Engineer (assurance qualité) s'assure que le logiciel fonctionne comme prévu avant d'arriver chez les utilisateurs. En général, il :",
+    "c.help.b1": "transforme les exigences en critères d'acceptation et en cas de test clairs ;",
+    "c.help.b2": "teste à la main et avec de l'automatisation, et re-teste après chaque modification ;",
+    "c.help.b3": "trouve, signale et suit les bugs jusqu'à leur correction ;",
+    "c.help.b4": "travaille avec les développeurs, les designers et les product owners pour détecter les problèmes tôt.",
+    "c.cv.done": "Téléchargement lancé",
+    "c.cv.status": "Téléchargement lancé : {file}",
+    "i.title": "Paulo Pacheco",
+    "i.desc": "Paulo Pacheco, QA Engineer. Téléchargez mon CV, lisez mon parcours ou visitez mon GitHub.",
+    "i.cvIdle": "Télécharger le CV (PDF, en anglais)",
+    "i.email": "E-mail",
+    "i.askTitle": "Posez des questions sur mon parcours",
+    "i.askSub": "Choisissez une question. Les réponses sont tirées de mon CV.",
+    "i.groupLabel": "Questions sur mon parcours",
+    "i.askHint": "Sélectionnez une question ci-dessus pour voir la réponse.",
+    "i.more": "Voir le CV complet",
+    "r.title": "CV - Paulo Pacheco",
+    "r.desc": "CV de Paulo Pacheco, QA Engineer : automatisation des tests, qualité dès l'amont (shift-left) et workflows QA pilotés par l'IA, avec une expérience en logiciels de santé.",
+    "r.cvIdle": "Télécharger le PDF (en anglais)",
+    "r.h.summary": "Profil",
+    "r.h.education": "Formation",
+    "r.h.experience": "Expérience professionnelle",
+    "r.h.projects": "Projets",
+    "r.h.publications": "Publications",
+    "r.h.languages": "Langues et certifications",
+    "r.summary": "QA Engineer avec 2 ans d'expérience en QA et plus de 3 ans d'ingénierie backend auparavant, avec une expérience dans le domaine des logiciels de santé. Expérience en conception et exécution de tests (fonctionnels, exploratoires, régression E2E), en qualité dès l'amont (shift-left) et en création de frameworks d'automatisation des tests et de workflows pilotés par l'IA pour automatiser le travail QA répétitif. Ma motivation : fournir aux personnes des services sûrs et de haute qualité grâce à de meilleurs logiciels.",
+    "r.edu.degree": "Master intégré en génie informatique",
+    "r.edu.school": "Université du Minho, Braga, Portugal",
+    "r.edu.s1t": "Spécialisation 1 : Ingénierie des systèmes logiciels",
+    "r.edu.s1d": "Axée sur la spécification, l'architecture et la conception de logiciels, ainsi que sur les tests logiciels.",
+    "r.edu.s2t": "Spécialisation 2 : Ingénierie des données",
+    "r.edu.s2d": "Axée sur la conception et la construction de systèmes de collecte et d'analyse de données brutes provenant de sources multiples.",
+    "r.via": "(via Quanteam)",
+    "r.role.be": "Software Engineer - Backend",
+    "r.tools": "Outils",
+    "r.current": "Présent",
+    "r.dur.qa": "1 an et 8 mois",
+    "r.dur.be": "3 ans et 7 mois",
+    "r.eu.desc": "Euronext est la première place boursière paneuropéenne, qui relie des économies diverses aux marchés de capitaux mondiaux.",
+    "r.eu.b1": "**Développement d'un système multi-agents pour automatiser les workflows QA :** Création d'un pipeline d'agents IA basés sur des LLM : un premier pour transformer les Epics et la documentation en runbooks structurés, un deuxième pour générer des scénarios __Gherkin__ pour chaque cas de test et un troisième pour mettre en forme les données afin de les importer sans friction dans __XRay__, ce qui réduit l'effort manuel de conception des tests.",
+    "r.eu.b2": "**Rédaction et validation de runbooks :** Traduction de la documentation produit en critères d'acceptation, cas de test et scénarios de test, en collaboration directe avec le Test Manager pour la validation et l'approbation formelles.",
+    "r.eu.b3": "**Exécution de plans de test et conformité des preuves :** Gestion des cycles de test actifs et documentation des preuves d'exécution pour garantir la qualité du logiciel. Collaboration avec les développeurs, les product managers et les collègues pour assurer une livraison de logiciels de haute qualité.",
+    "r.pq.desc": "Entreprise de Real-World Evidence qui collecte, intègre et analyse des données sur les résultats des soins.",
+    "r.pq.b1": "**Mise en place de l'automatisation des tests E2E à partir de zéro**, avec conception et construction du framework avec Playwright et GitHub Actions : une suite de régression E2E automatisée couvrant ~60% des parcours utilisateur critiques, exécutée chaque nuit.",
+    "r.pq.b2": "**Tests shift-left :** revue des critères d'acceptation et des tickets avec le Product Owner, le Designer et le Tech Lead avant l'entrée des stories dans le sprint, réduisant les ambiguïtés et les reprises.",
+    "r.pq.b3": "**Adoption de Playwright MCP** pour piloter des tests exploratoires dans le navigateur et générer des tests à partir des critères d'acceptation et des cas de test, raccourcissant le chemin entre la spécification et des tests opérationnels.",
+    "r.pq.b4": "**Investigation des incidents en production** avec __Sentry__ et __Grafana__ ; lecture du code pour fournir une analyse préliminaire de la cause racine avec chaque rapport de bug, afin de réduire le temps de tri des développeurs.",
+    "r.pq.b5": "**Seule personne en charge de la QA** dans l'équipe : rédaction de critères d'acceptation et de cas de test, réalisation de tests manuels fonctionnels, exploratoires et UAT, et signalement et suivi des défauts dans Jira.",
+    "r.pq.b6": "Soutien au produit, en aidant les équipes à résoudre les problèmes.",
+    "r.pb.desc": "Entreprise de Real-World Evidence, qui collecte, intègre et analyse des données sur les résultats des soins.",
+    "r.pb.b1": "**Développement du backend** de la plateforme centrée sur le patient, avec l'équipe, en utilisant Django, Python, Pytest et PostgreSQL.",
+    "r.pb.b2": "**Conception, implémentation et test d'API** pour collecter et consulter des mesures de résultats rapportées par les patients et par les cliniciens dans un contexte de real-world evidence, avec des tests unitaires Pytest.",
+    "r.pb.b3": "**Responsabilité de la correction des bugs** dans l'ensemble du code, grâce à ma connaissance approfondie de celui-ci, avec des correctifs rapides livrés aux clients dans le respect des principes CI/CD.",
+    "r.pb.b4": "**Échanges avec les clients et les product managers** pour mieux comprendre leurs points de friction et orienter les améliorations du produit.",
+    "r.pb.b5": "**Collaboration avec l'équipe Delivery** sur des changements de workflow qui lui ont permis de livrer plus vite des fonctionnalités aux clients.",
+    "r.pb.b6": "**Proposition, création et documentation d'outils internes** pour simplifier les workflows de l'équipe ; ces efforts ont contribué à une hausse de ~15% de la vitesse de livraison sur deux ans.",
+    "r.pr.title": "Système d'anamnèse sur borne en libre-service pour les services d'urgence",
+    "r.pr.thesis": "Projet de mémoire :",
+    "r.pr.thesisLink": "Mémoire de master",
+    "r.pr.desc": "Construction d'une borne en libre-service pour aider les médecins des urgences dans l'anamnèse des patients au Centro Hospitalar Universitário de São João (CHUSJ), à Porto.",
+    "r.pr.b1": "**Pilotage de la mise en œuvre technique et du développement full-stack :** création du frontend React utilisé par les médecins et d'une API REST Node.js + Express reposant sur MySQL.",
+    "r.pr.b2": "**Création d'une application Android autonome en Java** (Android Studio) permettant aux patients de saisir des données cliniques, avec des modules pour lire les données personnelles de la carte de citoyen et pour recueillir la tension artérielle, la saturation en oxygène et la température à partir de capteurs biométriques connectés en Bluetooth.",
+    "r.pr.b3": "**Réduction de ~16% du temps du processus d'anamnèse** lors de tests sur le terrain menés au CHUSJ.",
+    "r.lang.label": "Langues :",
+    "r.lang.value": "Portugais (langue maternelle), anglais - B2",
+    "r.cert.label": "Certifications :",
+    "qa": [
+      {
+        "id": "who",
+        "q": "En une phrase, qui êtes-vous ?",
+        "a": "QA Engineer avec 2 ans en QA et plus de 3 ans d'ingénierie backend auparavant, avec une expérience dans les logiciels de santé. Je me concentre sur la qualité dès l'amont (shift-left), sur les frameworks d'automatisation des tests et sur les workflows pilotés par l'IA qui automatisent le travail QA répétitif."
+      },
+      {
+        "id": "qa",
+        "q": "Quelle expérience avez-vous en QA ?",
+        "a": "Deux ans en QA. Chez Promptly Health (nov. 2024 - juin 2026), j'étais la seule personne en charge de la QA : j'ai rédigé des critères d'acceptation et des cas de test, réalisé des tests manuels fonctionnels, exploratoires et UAT, et signalé et suivi les défauts dans Jira.\n\nDepuis juillet 2026, je suis QA Engineer chez Euronext (via Quanteam), où je traduis la documentation produit en critères d'acceptation, cas de test et scénarios de test, les fais valider et approuver par le Test Manager, et exécute des cycles de test avec des preuves documentées pour la conformité."
+      },
+      {
+        "id": "automation",
+        "q": "Avez-vous de l'expérience en automatisation des tests ?",
+        "a": "Oui. Chez Promptly Health, j'ai mis en place l'automatisation des tests E2E à partir de zéro : j'ai conçu et construit le framework avec Playwright et GitHub Actions. Il s'exécute chaque nuit comme une suite de régression E2E automatisée couvrant ~60% des parcours utilisateur critiques.\n\nJ'ai aussi adopté Playwright MCP pour piloter des tests exploratoires dans le navigateur et générer des tests à partir des critères d'acceptation et des cas de test."
+      },
+      {
+        "id": "ai",
+        "q": "Comment utilisez-vous l'IA dans votre travail ?",
+        "a": "Chez Euronext, j'ai construit un pipeline multi-agents à base de LLM pour la QA : un agent transforme les Epics et la documentation en runbooks structurés, un deuxième génère des scénarios Gherkin pour chaque cas de test et un troisième met en forme les données pour l'import dans XRay. Cela réduit l'effort manuel de conception des tests.\n\nChez Promptly Health, j'ai utilisé Playwright MCP et Claude Code pour les tests exploratoires et la génération de tests."
+      },
+      {
+        "id": "health",
+        "q": "Quel est votre parcours dans le domaine de la santé ?",
+        "a": "Plus de cinq ans chez Promptly Health, une entreprise de real-world evidence qui collecte, intègre et analyse des données sur les résultats des soins : d'abord en ingénierie backend (mai 2021 - nov. 2024), à construire des API pour des mesures de résultats rapportées par les patients et par les cliniciens, puis comme QA Engineer (nov. 2024 - juin 2026).\n\nMon mémoire de master portait sur une borne en libre-service qui aide les médecins des urgences dans l'anamnèse des patients au CHUSJ, à Porto, et mes publications comptent deux articles de conférence IEEE sur les bornes de santé."
+      },
+      {
+        "id": "api",
+        "q": "Avez-vous travaillé avec des API ?",
+        "a": "Oui. En ingénierie backend, j'ai conçu, implémenté et testé des API REST en Python et Django, avec des tests unitaires Pytest et une approche TDD. J'ai aussi utilisé Postman.\n\nEn tant que QA Engineer, j'ai investigué des incidents en production avec Sentry et Grafana, en lisant le code pour ajouter une analyse préliminaire de la cause racine à chaque rapport de bug."
+      },
+      {
+        "id": "mobile",
+        "q": "Avez-vous de l'expérience en mobile ?",
+        "a": "Je n'ai pas testé d'applications mobiles de façon professionnelle. J'en ai en revanche construit une : une application Android autonome en Java, avec Android Studio, pour mon mémoire de master. Les patients y saisissent des données cliniques, et elle comprend des modules pour lire les données personnelles de la carte de citoyen et pour recueillir la tension artérielle, la saturation en oxygène et la température à partir de capteurs biométriques connectés en Bluetooth."
+      },
+      {
+        "id": "why",
+        "q": "Pourquoi cette évolution du backend vers la QA ?",
+        "a": "Après plus de 3 ans à développer des fonctionnalités backend, j'ai voulu me concentrer sur la qualité et l'impact pour l'utilisateur plutôt que sur la livraison de fonctionnalités, et j'avais pris davantage de plaisir à enquêter sur les bugs et à concevoir des tests qu'à construire. L'entreprise avait aussi un poste QA à pourvoir, ce qui rendait le moment opportun.\n\nMon bagage en ingénierie continue d'alimenter mon travail : je lis le code pendant les investigations, je construis de l'automatisation de tests et j'écris des rapports adaptés aux développeurs."
+      },
+      {
+        "id": "education",
+        "q": "Formation, certification et langues ?",
+        "a": "Master intégré en génie informatique à l'Université du Minho (2015 - 2021), avec des spécialisations en ingénierie des systèmes logiciels (dont les tests logiciels) et en ingénierie des données.\n\nISTQB Certified Tester Foundation Level 4.0. Langues : portugais (langue maternelle) et anglais (B2)."
+      }
+    ]
+  }
+};
+  root.I18N = { LANGS: LANGS, MONTHS: MONTHS, DICT: DICT };
+})(typeof window !== 'undefined' ? window : globalThis);
