@@ -155,7 +155,7 @@ test.describe('honesty and privacy guards on the answers', () => {
     const data = await allAnswers(page);
     const resume = await (await request.get('/resume.html')).text();
     const all = data.map((d) => d.a).join(' ');
-    for (const claim of ['~60%', 'B2', 'Playwright', 'ISTQB', 'XRay', 'Gherkin']) {
+    for (const claim of ['~15%', 'B2', 'Playwright', 'ISTQB', 'XRay', 'Gherkin']) {
       if (all.includes(claim)) expect(resume, `resume should also contain "${claim}"`).toContain(claim);
     }
   });

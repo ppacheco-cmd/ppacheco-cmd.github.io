@@ -53,7 +53,7 @@ test.describe('resume page', () => {
   test('key facts from the CV are present', async ({ page }) => {
     const body = page.locator('main.resume');
     await expect(body).toContainText('2 years in QA and 3+ years of prior backend engineering');
-    await expect(body).toContainText('automated E2E regression suite covering ~60% of critical user flows, run nightly');
+    await expect(body).toContainText('automated E2E regression suite covering critical user flows, run nightly');
     await expect(body).toContainText('multi-agent system to automate QA workflows');
     await expect(body).toContainText('Built a standalone Android app in Java');
     await expect(body).toContainText('Portuguese (Native), English - B2');

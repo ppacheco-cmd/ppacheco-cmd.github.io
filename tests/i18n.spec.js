@@ -403,7 +403,7 @@ for (const code of OTHER) {
       await expect(page.locator('li[data-i18n="r.eu.b1"] em')).toHaveText(['Gherkin', 'XRay']);
       await expect(page.locator('li[data-i18n="r.pq.b1"] strong')).toHaveCount(1);
       const jobs = page.locator('#h-experience ~ article.job');
-      await expect(jobs.nth(1)).toContainText('~60%');
+      await expect(jobs.nth(1)).not.toContainText('60%'); // the unverified coverage figure was removed on purpose
       await expect(jobs.nth(2)).toContainText('~15%');
       await expect(page.locator('#h-projects ~ article')).toContainText('~16%');
       await expect(page.locator('.r-kv').first()).toContainText('B2');

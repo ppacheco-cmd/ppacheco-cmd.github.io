@@ -117,7 +117,7 @@
     "r.eu.b3": "**Executed test plans and evidence compliance:** Managed active test cycles and documented execution evidence to ensure software quality. Collaborate with developers, product managers and peers to ensure high-quality software delivery.",
     "r.dur.qa": "1 yr 8 mos",
     "r.pq.desc": "Real-World Evidence company that collects, integrates, and analyses data on the outcomes of care.",
-    "r.pq.b1": "**Introduced E2E test automation from zero**, designing and building the framework with Playwright and GitHub Actions: an automated E2E regression suite covering ~60% of critical user flows, run nightly.",
+    "r.pq.b1": "**Introduced E2E test automation from zero**, designing and building the framework with Playwright and GitHub Actions: an automated E2E regression suite covering critical user flows, run nightly.",
     "r.pq.b2": "**Shift left testing:** reviewed acceptance criteria and tickets with the Product Owner, Designer, and Tech Lead before stories enter the sprint, reducing ambiguity and rework.",
     "r.pq.b3": "**Adopted Playwright MCP** to drive exploratory browser testing and generate tests from acceptance criteria and test cases, shortening the path from spec to working tests.",
     "r.pq.b4": "**Investigated production issues** with __Sentry__ and __Grafana__; read the codebase to provide preliminary root-cause analysis alongside each bug report, aiming to reduce developer triage time.",
@@ -167,7 +167,7 @@
       {
         "id": "automation",
         "q": "Do you have test automation experience?",
-        "a": "Yes. At Promptly Health I introduced E2E test automation from zero: I designed and built the framework with Playwright and GitHub Actions. It runs nightly as an automated E2E regression suite covering ~60% of critical user flows.\n\nI also adopted Playwright MCP to drive exploratory browser testing and to generate tests from acceptance criteria and test cases."
+        "a": "Yes. At Promptly Health I introduced E2E test automation from zero: I designed and built the framework with Playwright and GitHub Actions. It runs nightly as an automated E2E regression suite covering critical user flows.\n\nI also adopted Playwright MCP to drive exploratory browser testing and to generate tests from acceptance criteria and test cases."
       },
       {
         "id": "ai",
@@ -255,7 +255,7 @@
     "r.eu.b2": "**Redação e validação de runbooks:** Tradução da documentação de produto em critérios de aceitação, casos de teste e cenários de teste, em colaboração direta com o Test Manager para validação e aprovação formais.",
     "r.eu.b3": "**Execução de planos de teste e conformidade de evidências:** Gestão de ciclos de teste ativos e documentação das evidências de execução para garantir a qualidade do software. Colaboração com programadores, product managers e colegas para assegurar a entrega de software de elevada qualidade.",
     "r.pq.desc": "Empresa de Real-World Evidence que recolhe, integra e analisa dados sobre os resultados dos cuidados de saúde.",
-    "r.pq.b1": "**Introdução da automação de testes E2E a partir do zero**, com conceção e construção da framework com Playwright e GitHub Actions: uma suite de regressão E2E automatizada que cobre ~60% dos fluxos críticos de utilizador, executada todas as noites.",
+    "r.pq.b1": "**Introdução da automação de testes E2E a partir do zero**, com conceção e construção da framework com Playwright e GitHub Actions: uma suite de regressão E2E automatizada que cobre os fluxos críticos de utilizador, executada todas as noites.",
     "r.pq.b2": "**Testes shift-left:** revisão de critérios de aceitação e tickets com o Product Owner, o Designer e o Tech Lead antes de as histórias entrarem no sprint, reduzindo ambiguidades e retrabalho.",
     "r.pq.b3": "**Adoção do Playwright MCP** para conduzir testes exploratórios no browser e gerar testes a partir de critérios de aceitação e casos de teste, encurtando o caminho entre a especificação e testes funcionais.",
     "r.pq.b4": "**Investigação de problemas em produção** com __Sentry__ e __Grafana__; leitura do código para fornecer uma análise preliminar da causa raiz junto de cada relatório de bug, com o objetivo de reduzir o tempo de triagem dos programadores.",
@@ -292,7 +292,7 @@
       {
         "id": "automation",
         "q": "Tem experiência em automação de testes?",
-        "a": "Sim. Na Promptly Health introduzi a automação de testes E2E a partir do zero: concebi e construí a framework com Playwright e GitHub Actions. Corre todas as noites como uma suite de regressão E2E automatizada que cobre ~60% dos fluxos críticos de utilizador.\n\nAdotei também o Playwright MCP para conduzir testes exploratórios no browser e para gerar testes a partir de critérios de aceitação e casos de teste."
+        "a": "Sim. Na Promptly Health introduzi a automação de testes E2E a partir do zero: concebi e construí a framework com Playwright e GitHub Actions. Corre todas as noites como uma suite de regressão E2E automatizada que cobre os fluxos críticos de utilizador.\n\nAdotei também o Playwright MCP para conduzir testes exploratórios no browser e para gerar testes a partir de critérios de aceitação e casos de teste."
       },
       {
         "id": "ai",
@@ -380,7 +380,7 @@
     "r.eu.b2": "**Redacción y validación de runbooks:** Traducción de la documentación de producto en criterios de aceptación, casos de prueba y escenarios de prueba, colaborando directamente con el Test Manager para su validación y aprobación formales.",
     "r.eu.b3": "**Ejecución de planes de prueba y cumplimiento de evidencias:** Gestión de ciclos de prueba activos y documentación de las evidencias de ejecución para garantizar la calidad del software. Colaboración con desarrolladores, product managers y compañeros para asegurar una entrega de software de alta calidad.",
     "r.pq.desc": "Empresa de Real-World Evidence que recopila, integra y analiza datos sobre los resultados de la atención sanitaria.",
-    "r.pq.b1": "**Introducción de la automatización de pruebas E2E desde cero**, diseñando y construyendo el framework con Playwright y GitHub Actions: una suite de regresión E2E automatizada que cubre ~60% de los flujos críticos de usuario, ejecutada cada noche.",
+    "r.pq.b1": "**Introducción de la automatización de pruebas E2E desde cero**, diseñando y construyendo el framework con Playwright y GitHub Actions: una suite de regresión E2E automatizada que cubre los flujos críticos de usuario, ejecutada cada noche.",
     "r.pq.b2": "**Pruebas shift-left:** revisión de criterios de aceptación y tickets con el Product Owner, el Designer y el Tech Lead antes de que las historias entren en el sprint, reduciendo ambigüedades y retrabajo.",
     "r.pq.b3": "**Adopción de Playwright MCP** para dirigir pruebas exploratorias en el navegador y generar pruebas a partir de criterios de aceptación y casos de prueba, acortando el camino de la especificación a pruebas funcionando.",
     "r.pq.b4": "**Investigación de incidencias en producción** con __Sentry__ y __Grafana__; lectura del código para aportar un análisis preliminar de la causa raíz junto a cada informe de error, con el objetivo de reducir el tiempo de triaje de los desarrolladores.",
@@ -417,7 +417,7 @@
       {
         "id": "automation",
         "q": "¿Tienes experiencia en automatización de pruebas?",
-        "a": "Sí. En Promptly Health introduje la automatización de pruebas E2E desde cero: diseñé y construí el framework con Playwright y GitHub Actions. Se ejecuta cada noche como una suite de regresión E2E automatizada que cubre ~60% de los flujos críticos de usuario.\n\nAdopté también Playwright MCP para dirigir pruebas exploratorias en el navegador y para generar pruebas a partir de criterios de aceptación y casos de prueba."
+        "a": "Sí. En Promptly Health introduje la automatización de pruebas E2E desde cero: diseñé y construí el framework con Playwright y GitHub Actions. Se ejecuta cada noche como una suite de regresión E2E automatizada que cubre los flujos críticos de usuario.\n\nAdopté también Playwright MCP para dirigir pruebas exploratorias en el navegador y para generar pruebas a partir de criterios de aceptación y casos de prueba."
       },
       {
         "id": "ai",
@@ -505,7 +505,7 @@
     "r.eu.b2": "**Rédaction et validation de runbooks :** Traduction de la documentation produit en critères d'acceptation, cas de test et scénarios de test, en collaboration directe avec le Test Manager pour la validation et l'approbation formelles.",
     "r.eu.b3": "**Exécution de plans de test et conformité des preuves :** Gestion des cycles de test actifs et documentation des preuves d'exécution pour garantir la qualité du logiciel. Collaboration avec les développeurs, les product managers et les collègues pour assurer une livraison de logiciels de haute qualité.",
     "r.pq.desc": "Entreprise de Real-World Evidence qui collecte, intègre et analyse des données sur les résultats des soins.",
-    "r.pq.b1": "**Mise en place de l'automatisation des tests E2E à partir de zéro**, avec conception et construction du framework avec Playwright et GitHub Actions : une suite de régression E2E automatisée couvrant ~60% des parcours utilisateur critiques, exécutée chaque nuit.",
+    "r.pq.b1": "**Mise en place de l'automatisation des tests E2E à partir de zéro**, avec conception et construction du framework avec Playwright et GitHub Actions : une suite de régression E2E automatisée couvrant les parcours utilisateur critiques, exécutée chaque nuit.",
     "r.pq.b2": "**Tests shift-left :** revue des critères d'acceptation et des tickets avec le Product Owner, le Designer et le Tech Lead avant l'entrée des stories dans le sprint, réduisant les ambiguïtés et les reprises.",
     "r.pq.b3": "**Adoption de Playwright MCP** pour piloter des tests exploratoires dans le navigateur et générer des tests à partir des critères d'acceptation et des cas de test, raccourcissant le chemin entre la spécification et des tests opérationnels.",
     "r.pq.b4": "**Investigation des incidents en production** avec __Sentry__ et __Grafana__ ; lecture du code pour fournir une analyse préliminaire de la cause racine avec chaque rapport de bug, afin de réduire le temps de tri des développeurs.",
@@ -542,7 +542,7 @@
       {
         "id": "automation",
         "q": "Avez-vous de l'expérience en automatisation des tests ?",
-        "a": "Oui. Chez Promptly Health, j'ai mis en place l'automatisation des tests E2E à partir de zéro : j'ai conçu et construit le framework avec Playwright et GitHub Actions. Il s'exécute chaque nuit comme une suite de régression E2E automatisée couvrant ~60% des parcours utilisateur critiques.\n\nJ'ai aussi adopté Playwright MCP pour piloter des tests exploratoires dans le navigateur et générer des tests à partir des critères d'acceptation et des cas de test."
+        "a": "Oui. Chez Promptly Health, j'ai mis en place l'automatisation des tests E2E à partir de zéro : j'ai conçu et construit le framework avec Playwright et GitHub Actions. Il s'exécute chaque nuit comme une suite de régression E2E automatisée couvrant les parcours utilisateur critiques.\n\nJ'ai aussi adopté Playwright MCP pour piloter des tests exploratoires dans le navigateur et générer des tests à partir des critères d'acceptation et des cas de test."
       },
       {
         "id": "ai",
