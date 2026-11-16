@@ -34,12 +34,14 @@ The site is small on purpose, so the test suite can be strict.
 
 ```bash
 npm install
-npx playwright install chrome   # first time only
+cp env/.env.example env/.env.dev   # first time only: points the tests at the local server
 
-npm run serve        # http://localhost:4173
-npm test             # the Playwright suite
-npm run test:a11y    # accessibility checks only
-npm run check        # tests + Lighthouse gate
+npm run serve         # http://localhost:4173
+npm test              # TypeScript suite (page objects, tagged tests)
+npm run test:smoke    # only @smoke tests
+npm run test:legacy   # the original JavaScript suite (being migrated)
+npm run lint          # ESLint + Prettier, zero warnings
+npm run check         # lint + both suites + Lighthouse gate
 ```
 
 Serve it over HTTP, as above. Opening `index.html` straight from disk can't do the save-only
@@ -57,8 +59,13 @@ assets/
   i18n.js             translations (en, pt, es, fr)
   fonts/              Figtree, self-hosted (SIL OFL 1.1)
 cv/                   the downloadable PDF
-tests/                Playwright + axe specs and a tiny static server
-scripts/lighthouse.mjs
+pages/                page objects and components (Playwright, TypeScript)
+fixtures/             page objects registered as fixtures
+enums/  config/       routes, repeated strings, environment-driven config
+tests/site/           the TypeScript specs, one tag per test
+legacy-tests/         the original JavaScript suite, migrated spec by spec
+AGENTS.md  .claude/   rules and skills for AI coding agents (see below)
+scripts/              static server, Lighthouse gate, framework checks
 ```
 
 A few decisions worth a look:
@@ -68,6 +75,14 @@ A few decisions worth a look:
 - **Gender-neutral wording** in the translations, with French spacing rules respected.
 - **Self-hosted font, no third-party requests.** The page loads nothing from other domains.
 - **Public CV only.** The PDF in this repo leaves out my phone number on purpose.
+
+## Built on agentic-playwright
+
+The new test layer follows [agentic-playwright](https://github.com/idavidov13/agentic-playwright)
+(MIT): page objects as fixtures, one tag per test, GIVEN / WHEN / THEN steps, and a written
+"constitution" in `AGENTS.md` that AI coding agents must follow. A hook and the pre-commit
+scan enforce the mechanical rules, such as no hard waits and no raw locators. Third-party notices
+are in `NOTICE.md`.
 
 ## A note on the translations
 

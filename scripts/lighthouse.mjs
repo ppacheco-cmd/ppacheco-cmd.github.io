@@ -23,7 +23,7 @@ async function serverUp() {
 
 let server = null;
 if (!process.env.LH_BASE && !(await serverUp())) {
-  server = spawn('node', ['tests/serve.js'], { stdio: 'ignore' });
+  server = spawn('node', ['scripts/serve.js'], { stdio: 'ignore' });
   for (let i = 0; i < 40 && !(await serverUp()); i++) await sleep(150);
   if (!(await serverUp())) { console.error('Could not start the local server'); process.exit(2); }
 }

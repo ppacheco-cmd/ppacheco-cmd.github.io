@@ -3,3 +3,18 @@ test-results/
 playwright-report/
 .DS_Store
 lighthouse-reports/
+
+# Playwright (framework)
+/blob-report/
+/playwright/.cache/
+.auth/
+test-downloads/
+
+# Environment files (keep .env.example as template)
+env/.env.*
+!env/.env.example
+
+# Claude Code / Playwright CLI session data (cookies, snapshots) must never be committed
+.claude/projects/
+.playwright-cli/
+__pycache__/
