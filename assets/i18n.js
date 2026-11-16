@@ -99,7 +99,7 @@
     "i.groupLabel": "Questions about my background",
     "r.cvIdle": "Download PDF",
     "r.h.summary": "Summary",
-    "r.summary": "QA Engineer with 2 years in QA and 3+ years of prior backend engineering, with a healthcare software background. Experienced in test design and execution (functional, exploratory, E2E regression), shift-left quality, and building test automation frameworks and AI-driven workflows to automate repetitive QA work. Driven by the opportunity to deliver high-quality, safe services to individuals through better software.",
+    "r.summary": "QA Engineer with 2 years in QA and 3+ years of prior backend engineering, with a healthcare software background. Experienced in test design and execution, shift-left quality, and building test automation frameworks and AI-driven workflows to automate repetitive QA work. Driven by the opportunity to deliver high-quality, safe services to individuals through better software.",
     "r.h.education": "Education",
     "r.edu.degree": "Integrated MSc in Informatics Engineering",
     "r.edu.school": "University of Minho, Braga, Portugal",
@@ -112,7 +112,7 @@
     "r.current": "Current",
     "r.tools": "Tools",
     "r.eu.desc": "Euronext is the leading pan-European stock exchange, connecting diverse economies to global capital markets.",
-    "r.eu.b1": "**Developed a multi-agent system to automate QA workflows:** Built a pipeline of LLM-based AI agents: one to parse Epics and documentation into structured runbooks, a second to generate __Gherkin__ scenarios for each test case, and a third to format data for seamless __XRay__ importing, reducing manual test-design effort.",
+    "r.eu.b1": "**Developed a multi-agent system to automate QA workflows:** Built a pipeline of LLM-based AI agents: one to parse Epics and documentation into structured runbooks with test cases, and a second to format data for seamless __XRay__ importing, reducing manual test-design effort.",
     "r.eu.b2": "**Authored and validated runbooks:** Translated product documentation into acceptance criteria, test cases and test scenarios, collaborating directly with the Test Manager for formal validation and sign-off.",
     "r.eu.b3": "**Executed test plans and evidence compliance:** Managed active test cycles and documented execution evidence to ensure software quality. Collaborate with developers, product managers and peers to ensure high-quality software delivery.",
     "r.dur.qa": "1 yr 8 mos",
@@ -127,11 +127,10 @@
     "r.dur.be": "3 yrs 7 mos",
     "r.pb.desc": "Real-World Evidence company, collecting, integrating and analysing data on the outcomes of care.",
     "r.pb.b1": "**Developed the backend** of the patient-centric platform alongside the team, using Django, Python, Pytest, and PostgreSQL.",
-    "r.pb.b2": "**Designed, implemented and tested APIs** to collect and retrieve patient-reported and clinician-reported outcome measures within a real-world evidence context, using Pytest unit tests.",
+    "r.pb.b2": "**Designed, implemented and tested APIs** to collect and retrieve patient-reported and clinician-reported outcome measures, including mental health questionnaires, using Pytest unit tests.",
     "r.pb.b3": "**Owned bug fixes** across the codebase given my in-depth knowledge of it, shipping quick fixes to clients while adhering to CI/CD principles.",
     "r.pb.b4": "**Engaged customers and product managers** to better understand pain points and shape product improvements.",
     "r.pb.b5": "**Collaborated with the Delivery team** on workflow changes that helped them ship features to clients faster.",
-    "r.pb.b6": "**Proposed, built, and documented internal tools** to streamline team workflows; these efforts contributed to a ~15% boost in delivery speed over two years.",
     "r.h.projects": "Projects",
     "r.pr.title": "Self-service Kiosk-based Anamnesis System for Emergency Departments",
     "r.pr.thesis": "Thesis project:",
@@ -172,7 +171,7 @@
       {
         "id": "ai",
         "q": "How do you use AI in your work?",
-        "a": "At Euronext I built a multi-agent LLM pipeline for QA: one agent parses Epics and documentation into structured runbooks, a second generates Gherkin scenarios for each test case, and a third formats the data for XRay import. It reduces manual test-design effort.\n\nAt Promptly Health I used Playwright MCP and Claude Code for exploratory testing and test generation."
+        "a": "At Euronext I built a multi-agent LLM pipeline for QA: one agent parses Epics and documentation into structured runbooks with test cases, and a second formats the data for XRay import. It reduces manual test-design effort.\n\nAt Promptly Health I used Playwright MCP and Claude Code for exploratory testing and test generation."
       },
       {
         "id": "health",
@@ -237,7 +236,7 @@
     "r.h.projects": "Projetos",
     "r.h.publications": "Publicações",
     "r.h.languages": "Idiomas e certificações",
-    "r.summary": "QA Engineer com 2 anos de experiência em QA e mais de 3 anos anteriores em engenharia de backend, com experiência na área do software de saúde. Experiência em conceção e execução de testes (funcionais, exploratórios, regressão E2E), qualidade desde o início (shift-left) e construção de frameworks de automação de testes e de fluxos de trabalho com IA para automatizar tarefas repetitivas de QA. A minha motivação é entregar serviços seguros e de elevada qualidade às pessoas através de melhor software.",
+    "r.summary": "QA Engineer com 2 anos de experiência em QA e mais de 3 anos anteriores em engenharia de backend, com experiência na área do software de saúde. Experiência em conceção e execução de testes, qualidade desde o início (shift-left) e construção de frameworks de automação de testes e de fluxos de trabalho com IA para automatizar tarefas repetitivas de QA. A minha motivação é entregar serviços seguros e de elevada qualidade às pessoas através de melhor software.",
     "r.edu.degree": "Mestrado Integrado em Engenharia Informática",
     "r.edu.school": "Universidade do Minho, Braga, Portugal",
     "r.edu.s1t": "Especialização 1: Engenharia de Sistemas de Software",
@@ -251,7 +250,7 @@
     "r.dur.qa": "1 ano e 8 meses",
     "r.dur.be": "3 anos e 7 meses",
     "r.eu.desc": "A Euronext é a principal bolsa de valores pan-europeia, que liga economias diversas aos mercados de capitais globais.",
-    "r.eu.b1": "**Desenvolvimento de um sistema multiagente para automatizar fluxos de trabalho de QA:** Construção de uma pipeline de agentes de IA baseados em LLM: um para converter Epics e documentação em runbooks estruturados, um segundo para gerar cenários __Gherkin__ para cada caso de teste e um terceiro para formatar os dados para uma importação fluida no __XRay__, reduzindo o esforço manual de conceção de testes.",
+    "r.eu.b1": "**Desenvolvimento de um sistema multiagente para automatizar fluxos de trabalho de QA:** Construção de uma pipeline de agentes de IA baseados em LLM: um para converter Epics e documentação em runbooks estruturados com casos de teste e um segundo para formatar os dados para uma importação fluida no __XRay__, reduzindo o esforço manual de conceção de testes.",
     "r.eu.b2": "**Redação e validação de runbooks:** Tradução da documentação de produto em critérios de aceitação, casos de teste e cenários de teste, em colaboração direta com o Test Manager para validação e aprovação formais.",
     "r.eu.b3": "**Execução de planos de teste e conformidade de evidências:** Gestão de ciclos de teste ativos e documentação das evidências de execução para garantir a qualidade do software. Colaboração com programadores, product managers e colegas para assegurar a entrega de software de elevada qualidade.",
     "r.pq.desc": "Empresa de Real-World Evidence que recolhe, integra e analisa dados sobre os resultados dos cuidados de saúde.",
@@ -263,11 +262,10 @@
     "r.pq.b6": "Apoio ao produto, ajudando as equipas na resolução de problemas.",
     "r.pb.desc": "Empresa de Real-World Evidence, que recolhe, integra e analisa dados sobre os resultados dos cuidados de saúde.",
     "r.pb.b1": "**Desenvolvimento do backend** da plataforma centrada no doente, em conjunto com a equipa, com Django, Python, Pytest e PostgreSQL.",
-    "r.pb.b2": "**Conceção, implementação e teste de APIs** para recolher e consultar medidas de resultados reportadas por doentes e por clínicos num contexto de real-world evidence, com testes unitários em Pytest.",
+    "r.pb.b2": "**Conceção, implementação e teste de APIs** para recolher e consultar medidas de resultados reportadas por doentes e por clínicos, incluindo questionários de saúde mental, com testes unitários em Pytest.",
     "r.pb.b3": "**Responsabilidade pela correção de bugs** em todo o código, dado o meu conhecimento profundo do mesmo, entregando correções rápidas aos clientes em conformidade com os princípios de CI/CD.",
     "r.pb.b4": "**Contacto com clientes e product managers** para compreender melhor as dificuldades e orientar melhorias do produto.",
     "r.pb.b5": "**Colaboração com a equipa de Delivery** em alterações de processo que os ajudaram a entregar funcionalidades aos clientes mais depressa.",
-    "r.pb.b6": "**Proposta, construção e documentação de ferramentas internas** para simplificar os fluxos de trabalho da equipa; estes esforços contribuíram para um aumento de ~15% na velocidade de entrega ao longo de dois anos.",
     "r.pr.title": "Sistema de anamnese em quiosque self-service para serviços de urgência",
     "r.pr.thesis": "Projeto de dissertação:",
     "r.pr.thesisLink": "Dissertação de mestrado",
@@ -297,7 +295,7 @@
       {
         "id": "ai",
         "q": "Como usa a IA no seu trabalho?",
-        "a": "Na Euronext construí uma pipeline multiagente com LLM para QA: um agente converte Epics e documentação em runbooks estruturados, um segundo gera cenários Gherkin para cada caso de teste e um terceiro formata os dados para importação no XRay. Reduz o esforço manual de conceção de testes.\n\nNa Promptly Health usei o Playwright MCP e o Claude Code para testes exploratórios e geração de testes."
+        "a": "Na Euronext construí uma pipeline multiagente com LLM para QA: um agente converte Epics e documentação em runbooks estruturados com casos de teste e um segundo formata os dados para importação no XRay. Reduz o esforço manual de conceção de testes.\n\nNa Promptly Health usei o Playwright MCP e o Claude Code para testes exploratórios e geração de testes."
       },
       {
         "id": "health",
@@ -362,7 +360,7 @@
     "r.h.projects": "Proyectos",
     "r.h.publications": "Publicaciones",
     "r.h.languages": "Idiomas y certificaciones",
-    "r.summary": "QA Engineer con 2 años de experiencia en QA y más de 3 años previos en ingeniería de backend, con experiencia en el ámbito del software de salud. Experiencia en diseño y ejecución de pruebas (funcionales, exploratorias, regresión E2E), calidad desde el inicio (shift-left) y creación de frameworks de automatización de pruebas y flujos de trabajo con IA para automatizar el trabajo repetitivo de QA. Mi motivación es ofrecer servicios seguros y de alta calidad a las personas a través de mejor software.",
+    "r.summary": "QA Engineer con 2 años de experiencia en QA y más de 3 años previos en ingeniería de backend, con experiencia en el ámbito del software de salud. Experiencia en diseño y ejecución de pruebas, calidad desde el inicio (shift-left) y creación de frameworks de automatización de pruebas y flujos de trabajo con IA para automatizar el trabajo repetitivo de QA. Mi motivación es ofrecer servicios seguros y de alta calidad a las personas a través de mejor software.",
     "r.edu.degree": "Máster integrado en Ingeniería Informática",
     "r.edu.school": "Universidad de Minho, Braga, Portugal",
     "r.edu.s1t": "Especialización 1: Ingeniería de Sistemas de Software",
@@ -376,7 +374,7 @@
     "r.dur.qa": "1 año y 8 meses",
     "r.dur.be": "3 años y 7 meses",
     "r.eu.desc": "Euronext es la principal bolsa paneuropea, que conecta economías diversas con los mercados de capitales globales.",
-    "r.eu.b1": "**Desarrollo de un sistema multiagente para automatizar flujos de trabajo de QA:** Construcción de un pipeline de agentes de IA basados en LLM: uno para convertir Epics y documentación en runbooks estructurados, un segundo para generar escenarios __Gherkin__ para cada caso de prueba y un tercero para dar formato a los datos y poder importarlos sin fricciones en __XRay__, reduciendo el esfuerzo manual de diseño de pruebas.",
+    "r.eu.b1": "**Desarrollo de un sistema multiagente para automatizar flujos de trabajo de QA:** Construcción de un pipeline de agentes de IA basados en LLM: uno para convertir Epics y documentación en runbooks estructurados con casos de prueba y un segundo para dar formato a los datos y poder importarlos sin fricciones en __XRay__, reduciendo el esfuerzo manual de diseño de pruebas.",
     "r.eu.b2": "**Redacción y validación de runbooks:** Traducción de la documentación de producto en criterios de aceptación, casos de prueba y escenarios de prueba, colaborando directamente con el Test Manager para su validación y aprobación formales.",
     "r.eu.b3": "**Ejecución de planes de prueba y cumplimiento de evidencias:** Gestión de ciclos de prueba activos y documentación de las evidencias de ejecución para garantizar la calidad del software. Colaboración con desarrolladores, product managers y compañeros para asegurar una entrega de software de alta calidad.",
     "r.pq.desc": "Empresa de Real-World Evidence que recopila, integra y analiza datos sobre los resultados de la atención sanitaria.",
@@ -388,11 +386,10 @@
     "r.pq.b6": "Apoyo al producto, ayudando a los equipos con la resolución de problemas.",
     "r.pb.desc": "Empresa de Real-World Evidence, que recopila, integra y analiza datos sobre los resultados de la atención sanitaria.",
     "r.pb.b1": "**Desarrollo del backend** de la plataforma centrada en el paciente junto con el equipo, usando Django, Python, Pytest y PostgreSQL.",
-    "r.pb.b2": "**Diseño, implementación y prueba de APIs** para recopilar y consultar medidas de resultados notificadas por pacientes y por profesionales clínicos en un contexto de real-world evidence, con pruebas unitarias en Pytest.",
+    "r.pb.b2": "**Diseño, implementación y prueba de APIs** para recopilar y consultar medidas de resultados notificadas por pacientes y por profesionales clínicos, incluidos cuestionarios de salud mental, con pruebas unitarias en Pytest.",
     "r.pb.b3": "**Responsabilidad de la corrección de errores** en todo el código, dado mi conocimiento profundo del mismo, entregando correcciones rápidas a los clientes respetando los principios de CI/CD.",
     "r.pb.b4": "**Contacto con clientes y product managers** para comprender mejor los puntos de dolor y orientar las mejoras del producto.",
     "r.pb.b5": "**Colaboración con el equipo de Delivery** en cambios de flujo de trabajo que les ayudaron a entregar funcionalidades a los clientes más rápido.",
-    "r.pb.b6": "**Propuesta, construcción y documentación de herramientas internas** para agilizar los flujos de trabajo del equipo; estos esfuerzos contribuyeron a un aumento de ~15% en la velocidad de entrega a lo largo de dos años.",
     "r.pr.title": "Sistema de anamnesis en quiosco de autoservicio para servicios de urgencias",
     "r.pr.thesis": "Proyecto de tesis:",
     "r.pr.thesisLink": "Tesis de máster",
@@ -422,7 +419,7 @@
       {
         "id": "ai",
         "q": "¿Cómo usas la IA en tu trabajo?",
-        "a": "En Euronext construí un pipeline multiagente con LLM para QA: un agente convierte Epics y documentación en runbooks estructurados, un segundo genera escenarios Gherkin para cada caso de prueba y un tercero da formato a los datos para importarlos en XRay. Reduce el esfuerzo manual de diseño de pruebas.\n\nEn Promptly Health usé Playwright MCP y Claude Code para pruebas exploratorias y generación de pruebas."
+        "a": "En Euronext construí un pipeline multiagente con LLM para QA: un agente convierte Epics y documentación en runbooks estructurados con casos de prueba y un segundo da formato a los datos para importarlos en XRay. Reduce el esfuerzo manual de diseño de pruebas.\n\nEn Promptly Health usé Playwright MCP y Claude Code para pruebas exploratorias y generación de pruebas."
       },
       {
         "id": "health",
@@ -487,7 +484,7 @@
     "r.h.projects": "Projets",
     "r.h.publications": "Publications",
     "r.h.languages": "Langues et certifications",
-    "r.summary": "QA Engineer avec 2 ans d'expérience en QA et plus de 3 ans d'ingénierie backend auparavant, avec une expérience dans le domaine des logiciels de santé. Expérience en conception et exécution de tests (fonctionnels, exploratoires, régression E2E), en qualité dès l'amont (shift-left) et en création de frameworks d'automatisation des tests et de workflows pilotés par l'IA pour automatiser le travail QA répétitif. Ma motivation : fournir aux personnes des services sûrs et de haute qualité grâce à de meilleurs logiciels.",
+    "r.summary": "QA Engineer avec 2 ans d'expérience en QA et plus de 3 ans d'ingénierie backend auparavant, avec une expérience dans le domaine des logiciels de santé. Expérience en conception et exécution de tests, en qualité dès l'amont (shift-left) et en création de frameworks d'automatisation des tests et de workflows pilotés par l'IA pour automatiser le travail QA répétitif. Ma motivation : fournir aux personnes des services sûrs et de haute qualité grâce à de meilleurs logiciels.",
     "r.edu.degree": "Master intégré en génie informatique",
     "r.edu.school": "Université du Minho, Braga, Portugal",
     "r.edu.s1t": "Spécialisation 1 : Ingénierie des systèmes logiciels",
@@ -501,7 +498,7 @@
     "r.dur.qa": "1 an et 8 mois",
     "r.dur.be": "3 ans et 7 mois",
     "r.eu.desc": "Euronext est la première place boursière paneuropéenne, qui relie des économies diverses aux marchés de capitaux mondiaux.",
-    "r.eu.b1": "**Développement d'un système multi-agents pour automatiser les workflows QA :** Création d'un pipeline d'agents IA basés sur des LLM : un premier pour transformer les Epics et la documentation en runbooks structurés, un deuxième pour générer des scénarios __Gherkin__ pour chaque cas de test et un troisième pour mettre en forme les données afin de les importer sans friction dans __XRay__, ce qui réduit l'effort manuel de conception des tests.",
+    "r.eu.b1": "**Développement d'un système multi-agents pour automatiser les workflows QA :** Création d'un pipeline d'agents IA basés sur des LLM : un premier pour transformer les Epics et la documentation en runbooks structurés avec des cas de test et un deuxième pour mettre en forme les données afin de les importer sans friction dans __XRay__, ce qui réduit l'effort manuel de conception des tests.",
     "r.eu.b2": "**Rédaction et validation de runbooks :** Traduction de la documentation produit en critères d'acceptation, cas de test et scénarios de test, en collaboration directe avec le Test Manager pour la validation et l'approbation formelles.",
     "r.eu.b3": "**Exécution de plans de test et conformité des preuves :** Gestion des cycles de test actifs et documentation des preuves d'exécution pour garantir la qualité du logiciel. Collaboration avec les développeurs, les product managers et les collègues pour assurer une livraison de logiciels de haute qualité.",
     "r.pq.desc": "Entreprise de Real-World Evidence qui collecte, intègre et analyse des données sur les résultats des soins.",
@@ -513,11 +510,10 @@
     "r.pq.b6": "Soutien au produit, en aidant les équipes à résoudre les problèmes.",
     "r.pb.desc": "Entreprise de Real-World Evidence, qui collecte, intègre et analyse des données sur les résultats des soins.",
     "r.pb.b1": "**Développement du backend** de la plateforme centrée sur le patient, avec l'équipe, en utilisant Django, Python, Pytest et PostgreSQL.",
-    "r.pb.b2": "**Conception, implémentation et test d'API** pour collecter et consulter des mesures de résultats rapportées par les patients et par les cliniciens dans un contexte de real-world evidence, avec des tests unitaires Pytest.",
+    "r.pb.b2": "**Conception, implémentation et test d'API** pour collecter et consulter des mesures de résultats rapportées par les patients et par les cliniciens, y compris des questionnaires de santé mentale, avec des tests unitaires Pytest.",
     "r.pb.b3": "**Responsabilité de la correction des bugs** dans l'ensemble du code, grâce à ma connaissance approfondie de celui-ci, avec des correctifs rapides livrés aux clients dans le respect des principes CI/CD.",
     "r.pb.b4": "**Échanges avec les clients et les product managers** pour mieux comprendre leurs points de friction et orienter les améliorations du produit.",
     "r.pb.b5": "**Collaboration avec l'équipe Delivery** sur des changements de workflow qui lui ont permis de livrer plus vite des fonctionnalités aux clients.",
-    "r.pb.b6": "**Proposition, création et documentation d'outils internes** pour simplifier les workflows de l'équipe ; ces efforts ont contribué à une hausse de ~15% de la vitesse de livraison sur deux ans.",
     "r.pr.title": "Système d'anamnèse sur borne en libre-service pour les services d'urgence",
     "r.pr.thesis": "Projet de mémoire :",
     "r.pr.thesisLink": "Mémoire de master",
@@ -547,7 +543,7 @@
       {
         "id": "ai",
         "q": "Comment utilisez-vous l'IA dans votre travail ?",
-        "a": "Chez Euronext, j'ai construit un pipeline multi-agents à base de LLM pour la QA : un agent transforme les Epics et la documentation en runbooks structurés, un deuxième génère des scénarios Gherkin pour chaque cas de test et un troisième met en forme les données pour l'import dans XRay. Cela réduit l'effort manuel de conception des tests.\n\nChez Promptly Health, j'ai utilisé Playwright MCP et Claude Code pour les tests exploratoires et la génération de tests."
+        "a": "Chez Euronext, j'ai construit un pipeline multi-agents à base de LLM pour la QA : un agent transforme les Epics et la documentation en runbooks structurés avec des cas de test et un deuxième met en forme les données pour l'import dans XRay. Cela réduit l'effort manuel de conception des tests.\n\nChez Promptly Health, j'ai utilisé Playwright MCP et Claude Code pour les tests exploratoires et la génération de tests."
       },
       {
         "id": "health",

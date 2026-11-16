@@ -393,18 +393,19 @@ for (const code of OTHER) {
     test('every bullet is translated, bold and italic parts are kept, and the facts are unchanged', async ({ page }) => {
       await open(page, '/resume.html', code);
       for (const pre of ['r.eu', 'r.pq', 'r.pb', 'r.pr']) {
-        const count = { 'r.eu': 3, 'r.pq': 6, 'r.pb': 6, 'r.pr': 3 }[pre];
+        const count = { 'r.eu': 3, 'r.pq': 6, 'r.pb': 5, 'r.pr': 3 }[pre];
         for (let n = 1; n <= count; n++) {
           const li = page.locator(`li[data-i18n="${pre}.b${n}"]`);
           const expected = I18N.DICT[code][`${pre}.b${n}`].replace(/\*\*|__/g, '');
           await expect(li, `${pre}.b${n}`).toHaveText(expected);
         }
       }
-      await expect(page.locator('li[data-i18n="r.eu.b1"] em')).toHaveText(['Gherkin', 'XRay']);
+      await expect(page.locator('li[data-i18n="r.eu.b1"] em')).toHaveText(['XRay']);
       await expect(page.locator('li[data-i18n="r.pq.b1"] strong')).toHaveCount(1);
       const jobs = page.locator('#h-experience ~ article.job');
       await expect(jobs.nth(1)).not.toContainText('60%'); // the unverified coverage figure was removed on purpose
-      await expect(jobs.nth(2)).toContainText('~15%');
+      await expect(jobs.nth(2)).not.toContainText('15%'); // the internal-tools bullet was removed on purpose
+      await expect(jobs.nth(2)).toContainText({ en: 'mental health', pt: 'saúde mental', es: 'salud mental', fr: 'santé mentale' }[code]);
       await expect(page.locator('#h-projects ~ article')).toContainText('~16%');
       await expect(page.locator('.r-kv').first()).toContainText('B2');
     });
