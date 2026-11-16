@@ -65,7 +65,7 @@ test.describe('translation data', () => {
   });
 
   test('translated text is really translated (only a few short labels may equal the English)', () => {
-    const base = ['c.role', 'r.role.be', 'i.title']; // names kept in English on purpose
+    const base = ['c.role', 'r.role.be', 'i.title', 'r.sk.v2']; // names kept in English on purpose (r.sk.v2 is a list of product names)
     const alsoSameWord = { pt: [], es: [], fr: ['r.via', 'r.h.publications'] }; // "(via Quanteam)" and "Publications" are French too
     for (const c of OTHER) {
       const allowed = new Set([...base, ...alsoSameWord[c]]);
@@ -370,7 +370,7 @@ for (const code of OTHER) {
       await open(page, '/resume.html', code);
       await expect(page).toHaveTitle(x.resumeTitle);
       await expect(page.locator('main.resume > section > h2')).toHaveText([
-        I18N.DICT[code]['r.h.summary'], I18N.DICT[code]['r.h.education'], x.hExp, I18N.DICT[code]['r.h.projects'], I18N.DICT[code]['r.h.publications'], x.hLang,
+        I18N.DICT[code]['r.h.summary'], I18N.DICT[code]['r.h.skills'], I18N.DICT[code]['r.h.education'], x.hExp, I18N.DICT[code]['r.h.projects'], I18N.DICT[code]['r.h.publications'], x.hLang,
       ]);
       await expect(page.locator('#h-summary + p')).toHaveText(I18N.DICT[code]['r.summary']);
       await expect(page.locator('.cv-btn')).toHaveAccessibleName(x.cvIdleResume);
@@ -407,7 +407,7 @@ for (const code of OTHER) {
       await expect(jobs.nth(2)).not.toContainText('15%'); // the internal-tools bullet was removed on purpose
       await expect(jobs.nth(2)).toContainText({ en: 'mental health', pt: 'saúde mental', es: 'salud mental', fr: 'santé mentale' }[code]);
       await expect(page.locator('#h-projects ~ article')).toContainText('~16%');
-      await expect(page.locator('.r-kv').first()).toContainText('B2');
+      await expect(page.locator('#h-languages ~ .r-kv').first()).toContainText('B2');
     });
 
     test('names, links and tools lists are unchanged', async ({ page }) => {

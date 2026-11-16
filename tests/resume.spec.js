@@ -6,6 +6,7 @@ const PHONE_LIKE = /(?:\+\s?351[\s.-]?)?(?<![\w.])9\d{2}[\s.-]?\d{3}[\s.-]?\d{3}
 
 const SECTIONS = [
   'Summary',
+  'Skills',
   'Education',
   'Professional Experience',
   'Projects',
@@ -32,13 +33,27 @@ test.describe('resume page', () => {
     await expect(page.locator('main.resume > section > h2').first()).toHaveCSS('text-transform', 'none');
   });
 
+  test('Skills section matches the CV: one line each for testing, tools and soft skills', async ({ page }) => {
+    const rows = page.locator('#h-skills ~ .r-kv');
+    await expect(rows).toHaveCount(3);
+    await expect(rows.nth(0)).toHaveText('Testing: Test planning, test cases, functional, UAT, E2E regression, defect reporting and investigation');
+    await expect(rows.nth(1)).toHaveText('Tools: Playwright, Python, GitHub Actions, XRay, Postman, Jira, Git');
+    await expect(rows.nth(2)).toHaveText('Soft skills: Collaboration, attention to detail, analytical thinking');
+  });
+
+  test('dates use one format: three-letter months, and "Present" for the current job', async ({ page }) => {
+    const times = await page.locator('time').allTextContents();
+    for (const t of times) expect(t, t).toMatch(/^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}$/);
+    await expect(page.locator('#h-experience ~ article.job').nth(0)).not.toContainText('Current');
+  });
+
   test('lists the three jobs with the right dates and durations', async ({ page }) => {
     const jobs = page.locator('#h-experience ~ article.job');
     await expect(jobs).toHaveCount(3);
 
     await expect(jobs.nth(0)).toContainText('Euronext');
     await expect(jobs.nth(0)).toContainText('(via Quanteam)');
-    await expect(jobs.nth(0)).toContainText('July 2026 - Current');
+    await expect(jobs.nth(0)).toContainText('Jul 2026 - Present');
 
     await expect(jobs.nth(1)).toContainText('Promptly Health');
     await expect(jobs.nth(1)).toContainText('QA Engineer');
