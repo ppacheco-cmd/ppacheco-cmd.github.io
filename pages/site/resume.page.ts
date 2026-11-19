@@ -1,6 +1,8 @@
 import { Locator, Page, expect } from '@playwright/test';
 import { TopBarComponent } from '../components/topbar.component';
 import { HelpComponent } from '../components/help.component';
+import { CvButtonComponent } from '../components/cv-button.component';
+import { CvButtonText } from '../../enums/site/cv';
 import { ResumeSections, SiteRoutes } from '../../enums/site/site';
 import {
     PageTestIds,
@@ -14,16 +16,22 @@ import {
 export class ResumePage {
     readonly topBar: TopBarComponent;
     readonly help: HelpComponent;
+    readonly cvButton: CvButtonComponent;
 
     constructor(private readonly page: Page) {
         this.topBar = new TopBarComponent(page);
         this.help = new HelpComponent(page);
+        this.cvButton = new CvButtonComponent(page, CvButtonText.RESUME_IDLE);
     }
 
     // ==================== Locators ====================
 
     get nameHeading(): Locator {
         return this.page.getByRole('heading', { level: 1 });
+    }
+
+    get heading(): Locator {
+        return this.nameHeading;
     }
 
     get mainContent(): Locator {

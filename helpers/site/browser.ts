@@ -1,4 +1,5 @@
 import { Locator, Page } from '@playwright/test';
+import { SaveOnly } from '../../enums/site/cv';
 import { ThemeStorage } from '../../enums/site/theme';
 
 /**
@@ -147,4 +148,146 @@ export function collectPageErrors(page: Page): string[] {
     const errors: string[] = [];
     page.on('pageerror', (error) => errors.push(String(error)));
     return errors;
+}
+
+/**
+ * Counts every call to `window.open`, from before any page script runs, so a
+ * test can prove a click never tried to open a new window.
+ *
+ * @param page - The page to prepare; call before navigating.
+ */
+export async function trackWindowOpen(page: Page): Promise<void> {
+    await page.addInitScript(() => {
+        const counter = window as unknown as { __opens: number };
+        counter.__opens = 0;
+        const original = window.open;
+        window.open = (...args): Window | null => {
+            counter.__opens += 1;
+            return original.apply(window, args);
+        };
+    });
+}
+
+/**
+ * Reads how many times `window.open` was called since {@link trackWindowOpen}.
+ *
+ * @param page - The page to read.
+ * @returns The number of calls.
+ */
+export async function windowOpenCount(page: Page): Promise<number> {
+    return page.evaluate(
+        () => (window as unknown as { __opens: number }).__opens
+    );
+}
+
+/**
+ * Records the MIME type of every Blob the page turns into an object URL.
+ *
+ * @param page - The page to prepare; call before navigating.
+ */
+export async function trackBlobTypes(page: Page): Promise<void> {
+    await page.addInitScript(() => {
+        const holder = window as unknown as { __blobTypes: string[] };
+        holder.__blobTypes = [];
+        const real = URL.createObjectURL.bind(URL);
+        URL.createObjectURL = (blob: Blob | MediaSource): string => {
+            if (blob instanceof Blob) holder.__blobTypes.push(blob.type);
+            return real(blob);
+        };
+    });
+}
+
+/**
+ * Reads the Blob types recorded since {@link trackBlobTypes}.
+ *
+ * @param page - The page to read.
+ * @returns One MIME type per Blob.
+ */
+export async function blobTypes(page: Page): Promise<string[]> {
+    return page.evaluate(
+        () => (window as unknown as { __blobTypes: string[] }).__blobTypes
+    );
+}
+
+/**
+ * Removes the browser's `fetch`, as in a very old or locked-down browser.
+ *
+ * @param page - The page to prepare; call before navigating.
+ */
+export async function removeFetch(page: Page): Promise<void> {
+    await page.addInitScript(() => {
+        (window as unknown as { fetch: undefined }).fetch = undefined;
+    });
+}
+
+/**
+ * Removes the `download` attribute from a link, simulating a browser that does
+ * not honour it.
+ *
+ * @param link - The link to change.
+ */
+export async function removeDownloadAttribute(link: Locator): Promise<void> {
+    await link.evaluate((anchor) => anchor.removeAttribute('download'));
+}
+
+/**
+ * Fires a plain click and four modified clicks at a link, and reports for each
+ * whether the page's handler took the click over (called preventDefault).
+ *
+ * @param link - The link to click.
+ * @returns Whether each kind of click was taken over.
+ */
+export async function clickHandlingByModifier(
+    link: Locator
+): Promise<Record<'normal' | 'ctrl' | 'meta' | 'shift' | 'alt', boolean>> {
+    return link.evaluate((anchor) => {
+        const fire = (init: MouseEventInit): boolean => {
+            const event = new MouseEvent('click', {
+                bubbles: true,
+                cancelable: true,
+                ...init,
+            });
+            anchor.dispatchEvent(event);
+            return event.defaultPrevented;
+        };
+        return {
+            normal: fire({}),
+            ctrl: fire({ ctrlKey: true }),
+            meta: fire({ metaKey: true }),
+            shift: fire({ shiftKey: true }),
+            alt: fire({ altKey: true }),
+        };
+    });
+}
+
+/**
+ * Counts iframes, embeds and objects on the page, where a viewer would appear
+ * if the PDF were displayed instead of saved.
+ *
+ * @param page - The page to inspect.
+ * @returns The number of embedding elements.
+ */
+export async function embeddedViewerCount(page: Page): Promise<number> {
+    return page.evaluate(
+        () => document.querySelectorAll('iframe, embed, object').length
+    );
+}
+
+/**
+ * Holds back every request for the CV file until the returned function is
+ * called, so a test can click before the background download has finished.
+ *
+ * @param page - The page whose requests to hold; call before navigating.
+ * @returns A function that lets the held requests continue.
+ */
+export async function holdCvRequests(page: Page): Promise<() => void> {
+    let release: () => void = () => undefined;
+    const gate = new Promise<void>((resolve) => {
+        release = resolve;
+    });
+    await page.route(`**/*${SaveOnly.PDF_SUFFIX}`, async (route) => {
+        await gate;
+        await route.continue();
+    });
+    return release;
 }

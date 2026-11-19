@@ -1,4 +1,5 @@
 import { Download } from '@playwright/test';
+import crypto from 'crypto';
 import fs from 'fs';
 import { CvFileRules } from '../../enums/site/theme';
 
@@ -22,4 +23,14 @@ export function pdfFilesInCvFolder(): string[] {
 export async function readDownload(download: Download): Promise<Buffer> {
     const path = await download.path();
     return fs.readFileSync(path);
+}
+
+/**
+ * Computes the SHA-256 fingerprint of some bytes.
+ *
+ * @param data - The bytes to fingerprint.
+ * @returns The fingerprint as lowercase hex.
+ */
+export function sha256(data: Buffer): string {
+    return crypto.createHash('sha256').update(data).digest('hex');
 }

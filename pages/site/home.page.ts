@@ -1,6 +1,8 @@
 import { Locator, Page, expect } from '@playwright/test';
 import { TopBarComponent } from '../components/topbar.component';
 import { HelpComponent } from '../components/help.component';
+import { CvButtonComponent } from '../components/cv-button.component';
+import { CvButtonText } from '../../enums/site/cv';
 import { HomeText, SiteRoutes } from '../../enums/site/site';
 import { TestIds } from '../../enums/site/help';
 import { PageTestIds } from '../../enums/site/resume';
@@ -20,10 +22,12 @@ import {
 export class HomePage {
     readonly topBar: TopBarComponent;
     readonly help: HelpComponent;
+    readonly cvButton: CvButtonComponent;
 
     constructor(private readonly page: Page) {
         this.topBar = new TopBarComponent(page);
         this.help = new HelpComponent(page);
+        this.cvButton = new CvButtonComponent(page, CvButtonText.HOME_IDLE);
     }
 
     // ==================== Locators ====================
