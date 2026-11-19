@@ -6,6 +6,7 @@ import { CvButtonText } from '../../enums/site/cv';
 import { HomeText, SiteRoutes } from '../../enums/site/site';
 import { TestIds } from '../../enums/site/help';
 import { PageTestIds } from '../../enums/site/resume';
+import { I18nTestIds } from '../../enums/site/i18n';
 import { AnswerLimits, AskUi } from '../../enums/site/ask';
 import {
     ContactIcons,
@@ -105,6 +106,36 @@ export class HomePage {
             .getByRole('button', { pressed: true });
     }
 
+    get questionChips(): Locator {
+        return this.page.getByTestId(I18nTestIds.CHIPS).getByRole('button');
+    }
+
+    get pressedChips(): Locator {
+        return this.page
+            .getByTestId(I18nTestIds.CHIPS)
+            .getByRole('button', { pressed: true });
+    }
+
+    get answerHint(): Locator {
+        return this.page.getByTestId(I18nTestIds.HINT);
+    }
+
+    get answerLinks(): Locator {
+        return this.answerPanel.getByRole('link');
+    }
+
+    get emailContactLink(): Locator {
+        return this.page.getByRole('link').filter({ has: this.emailIcon });
+    }
+
+    askHeadingNamed(name: string): Locator {
+        return this.page.getByRole('heading', { name });
+    }
+
+    chipNamed(text: string): Locator {
+        return this.questionChips.getByText(text, { exact: true });
+    }
+
     get answerPanel(): Locator {
         return this.page.getByTestId(TestIds.ANSWER);
     }
@@ -137,6 +168,26 @@ export class HomePage {
      */
     async open(): Promise<void> {
         await this.page.goto(SiteRoutes.HOME);
+    }
+
+    /**
+     * Opens the home page with a language chosen in the address (`?lang=`).
+     *
+     * @param {string} code - The language code, as written in the address.
+     * @returns {Promise<void>}
+     */
+    async openWithLanguage(code: string): Promise<void> {
+        await this.page.goto(`${SiteRoutes.HOME}?lang=${code}`);
+    }
+
+    /**
+     * Clicks a question chip by its visible text.
+     *
+     * @param {string} text - The chip's text in the current language.
+     * @returns {Promise<void>}
+     */
+    async clickChip(text: string): Promise<void> {
+        await this.chipNamed(text).click();
     }
 
     /**

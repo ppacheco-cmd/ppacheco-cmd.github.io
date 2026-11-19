@@ -39,9 +39,8 @@ cp env/.env.example env/.env.dev   # first time only: points the tests at the lo
 npm run serve         # http://localhost:4173
 npm test              # TypeScript suite (page objects, tagged tests)
 npm run test:smoke    # only @smoke tests
-npm run test:legacy   # the original JavaScript suite (being migrated)
 npm run lint          # ESLint + Prettier, zero warnings
-npm run check         # lint + both suites + Lighthouse gate
+npm run check         # lint + tests + Lighthouse gate
 ```
 
 Serve it over HTTP, as above. Opening `index.html` straight from disk can't do the save-only
@@ -62,8 +61,8 @@ cv/                   the downloadable PDF
 pages/                page objects and components (Playwright, TypeScript)
 fixtures/             page objects registered as fixtures
 enums/  config/       routes, repeated strings, environment-driven config
-tests/site/           the TypeScript specs, one tag per test
-legacy-tests/         the original JavaScript suite, migrated spec by spec
+tests/site/           the specs (functional/ and data/), one tag per test
+helpers/              browser, file, font, accessibility and translation helpers
 AGENTS.md  .claude/   rules and skills for AI coding agents (see below)
 scripts/              static server, Lighthouse gate, framework checks
 ```

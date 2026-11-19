@@ -19,6 +19,14 @@ export class HelpComponent {
         return this.page.getByRole('button', { name: HelpText.BUTTON });
     }
 
+    panelTitleNamed(name: string): Locator {
+        return this.panel.getByText(name, { exact: true });
+    }
+
+    buttonNamed(name: string): Locator {
+        return this.page.getByRole('button', { name });
+    }
+
     get openHelpButton(): Locator {
         return this.page.getByRole('button', {
             name: HelpText.BUTTON,

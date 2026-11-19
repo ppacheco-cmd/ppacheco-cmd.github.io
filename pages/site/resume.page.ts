@@ -3,6 +3,7 @@ import { TopBarComponent } from '../components/topbar.component';
 import { HelpComponent } from '../components/help.component';
 import { CvButtonComponent } from '../components/cv-button.component';
 import { CvButtonText } from '../../enums/site/cv';
+import { I18nTestIds } from '../../enums/site/i18n';
 import { ResumeSections, SiteRoutes } from '../../enums/site/site';
 import {
     PageTestIds,
@@ -59,13 +60,39 @@ export class ResumePage {
     }
 
     get languagesRegion(): Locator {
-        return this.page.getByRole('region', {
-            name: ResumeSections.LANGUAGES,
-        });
+        return this.page.getByTestId(I18nTestIds.LANGUAGES);
     }
 
     get jobs(): Locator {
         return this.experienceRegion.getByRole('article');
+    }
+
+    get summaryText(): Locator {
+        return this.page.getByTestId(I18nTestIds.SUMMARY);
+    }
+
+    get euronextJob(): Locator {
+        return this.page.getByTestId(I18nTestIds.JOB_EURONEXT);
+    }
+
+    get promptlyQaJob(): Locator {
+        return this.page.getByTestId(I18nTestIds.JOB_PROMPTLY_QA);
+    }
+
+    get promptlyBackendJob(): Locator {
+        return this.page.getByTestId(I18nTestIds.JOB_PROMPTLY_BACKEND);
+    }
+
+    get projectArticle(): Locator {
+        return this.page.getByTestId(I18nTestIds.PROJECT);
+    }
+
+    get publications(): Locator {
+        return this.page.getByTestId(I18nTestIds.PUBLICATION);
+    }
+
+    bullet(key: string): Locator {
+        return this.page.getByTestId(key);
     }
 
     get dates(): Locator {
@@ -122,6 +149,16 @@ export class ResumePage {
     }
 
     /**
+     * Opens the resume page with a language chosen in the address (`?lang=`).
+     *
+     * @param {string} code - The language code, as written in the address.
+     * @returns {Promise<void>}
+     */
+    async openWithLanguage(code: string): Promise<void> {
+        await this.page.goto(`${SiteRoutes.RESUME}?lang=${code}`);
+    }
+
+    /**
      * Switches the page to its print style, as when printing.
      *
      * @returns {Promise<void>}
@@ -156,6 +193,15 @@ export class ResumePage {
         const bar = await this.topBar.banner.innerText();
         const main = await this.mainContent.innerText();
         return `${bar}\n${main}`;
+    }
+
+    /**
+     * Reads the text of the main content only, as the visitor sees it.
+     *
+     * @returns {Promise<string>} The visible text of the main content.
+     */
+    async mainText(): Promise<string> {
+        return this.mainContent.innerText();
     }
 
     /**

@@ -17,15 +17,15 @@
 <body data-page="home" data-testid="page">
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="index.html" aria-label="PP: Paulo Pacheco, home" data-i18n-attr="aria-label:c.brand">PP</a>
+      <a class="brand" data-testid="brand" href="index.html" aria-label="PP: Paulo Pacheco, home" data-i18n-attr="aria-label:c.brand">PP</a>
       <div class="topbar-actions">
         <nav class="topnav" aria-label="Main" data-i18n-attr="aria-label:c.navLabel">
           <a href="resume.html" data-i18n="c.navResume">Resume</a>
           <a href="#ask" data-i18n="c.navAsk">Ask</a>
         </nav>
-        <div class="lang">
+        <div class="lang" data-testid="lang-switcher">
           <svg class="lang-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-          <span class="lang-code" aria-hidden="true">EN</span>
+          <span class="lang-code" data-testid="lang-code" aria-hidden="true">EN</span>
           <select id="lang-select" aria-label="Language" data-i18n-attr="aria-label:c.lang">
             <option value="en" lang="en-US">English</option>
             <option value="pt" lang="pt-PT">Português</option>
@@ -33,7 +33,7 @@
             <option value="fr" lang="fr">Français</option>
           </select>
         </div>
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <button class="theme-toggle" id="theme-toggle" data-testid="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
           <svg class="i-moon" data-testid="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
           <svg class="i-sun" data-testid="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         </button>
@@ -88,9 +88,9 @@
       <div class="ask-inner">
         <h2 id="ask-title" data-i18n="i.askTitle">Ask about my background</h2>
         <p class="ask-sub" data-i18n="i.askSub">Pick a question. The answers are written from my resume.</p>
-        <div class="chips" id="chips" role="group" aria-label="Questions about my background" data-i18n-attr="aria-label:i.groupLabel"></div>
+        <div class="chips" id="chips" data-testid="chips" role="group" aria-label="Questions about my background" data-i18n-attr="aria-label:i.groupLabel"></div>
         <div class="answer" id="answer" data-testid="answer" aria-live="polite">
-          <p class="answer-hint" data-i18n="i.askHint">Select a question above to see the answer.</p>
+          <p class="answer-hint" data-testid="answer-hint" data-i18n="i.askHint">Select a question above to see the answer.</p>
         </div>
         <noscript><p class="ask-sub">This section needs JavaScript. The same details are on the <a href="resume.html">resume page</a>.</p></noscript>
       </div>

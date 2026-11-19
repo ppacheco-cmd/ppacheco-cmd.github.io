@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import { SaveOnly } from '../../enums/site/cv';
+import { LanguageStorage } from '../../enums/site/i18n';
 import { ThemeStorage } from '../../enums/site/theme';
 
 /**
@@ -290,4 +291,182 @@ export async function holdCvRequests(page: Page): Promise<() => void> {
         await route.continue();
     });
     return release;
+}
+
+/**
+ * Reads the language code the page is showing (`data-lang` on the root element).
+ *
+ * @param page - The page to read.
+ * @returns The code, or null when none is set.
+ */
+export async function documentDataLang(page: Page): Promise<string | null> {
+    return page.evaluate(
+        (attribute) => document.documentElement.getAttribute(attribute),
+        LanguageStorage.DATA_ATTRIBUTE
+    );
+}
+
+/**
+ * Reads the document language tag (`lang` on the root element), e.g. `pt-PT`.
+ *
+ * @param page - The page to read.
+ * @returns The tag, or null when none is set.
+ */
+export async function documentLangTag(page: Page): Promise<string | null> {
+    return page.evaluate(() => document.documentElement.getAttribute('lang'));
+}
+
+/**
+ * Reads the language the visitor saved in the browser.
+ *
+ * @param page - The page to read.
+ * @returns The saved code, or null when nothing is saved.
+ */
+export async function storedLanguage(page: Page): Promise<string | null> {
+    return page.evaluate(
+        (key) => window.localStorage.getItem(key),
+        LanguageStorage.KEY
+    );
+}
+
+/**
+ * Tells whether the page is still hidden while it waits for its translation.
+ *
+ * @param page - The page to read.
+ * @returns True while the `data-pending-lang` marker is present.
+ */
+export async function isAwaitingTranslation(page: Page): Promise<boolean> {
+    return page.evaluate(
+        (attribute) => document.documentElement.hasAttribute(attribute),
+        LanguageStorage.PENDING_ATTRIBUTE
+    );
+}
+
+/**
+ * Reads whether the page body is drawn (`visible`) or hidden.
+ *
+ * @param page - The page to read.
+ * @returns The computed CSS `visibility` of the body.
+ */
+export async function bodyVisibility(page: Page): Promise<string> {
+    return page.evaluate(() => getComputedStyle(document.body).visibility);
+}
+
+/**
+ * Reads the page's meta description.
+ *
+ * @param page - The page to read.
+ * @returns The description text, or null when there is none.
+ */
+export async function metaDescription(page: Page): Promise<string | null> {
+    return page.evaluate(
+        () =>
+            document
+                .querySelector('meta[name="description"]')
+                ?.getAttribute('content') ?? null
+    );
+}
+
+/**
+ * Overrides the browser's preference list of languages before any page script runs.
+ *
+ * @param page - The page to prepare; call before navigating.
+ * @param languages - The languages, most preferred first.
+ */
+export async function setNavigatorLanguages(
+    page: Page,
+    languages: readonly string[]
+): Promise<void> {
+    await page.addInitScript(
+        (list) => {
+            Object.defineProperty(navigator, 'languages', { get: () => list });
+        },
+        [...languages]
+    );
+}
+
+/**
+ * Counts how often the page's main frame navigates from now on.
+ *
+ * @param page - The page to watch.
+ * @returns A function that returns the count so far.
+ */
+export function countNavigations(page: Page): () => number {
+    let count = 0;
+    page.on('framenavigated', () => {
+        count += 1;
+    });
+    return () => count;
+}
+
+/**
+ * Reads the bold and italic text inside an element.
+ *
+ * @param element - The element to read.
+ * @returns The texts of its `strong` and `em` children.
+ */
+export async function emphasisIn(
+    element: Locator
+): Promise<{ strong: string[]; em: string[] }> {
+    return element.evaluate((root) => ({
+        strong: [...root.querySelectorAll('strong')].map(
+            (node) => node.textContent ?? ''
+        ),
+        em: [...root.querySelectorAll('em')].map(
+            (node) => node.textContent ?? ''
+        ),
+    }));
+}
+
+/**
+ * Holds back every request matching a pattern until the returned function is called.
+ *
+ * @param page - The page whose requests to hold; call before navigating.
+ * @param pattern - A glob such as `** /assets/i18n.js` (without the space).
+ * @returns A function that lets the held requests continue.
+ */
+export async function holdRequestsMatching(
+    page: Page,
+    pattern: string
+): Promise<() => void> {
+    let release: () => void = () => undefined;
+    const gate = new Promise<void>((resolve) => {
+        release = resolve;
+    });
+    await page.route(pattern, async (route) => {
+        await gate;
+        await route.continue();
+    });
+    return release;
+}
+
+/**
+ * Makes every request matching a pattern fail, as if the file could not be loaded.
+ *
+ * @param page - The page to prepare; call before navigating.
+ * @param pattern - A glob of the files to fail.
+ */
+export async function abortRequestsMatching(
+    page: Page,
+    pattern: string
+): Promise<void> {
+    await page.route(pattern, (route) => route.abort());
+}
+
+/**
+ * Reads the `lang` attribute and the value of every option of a select.
+ *
+ * @param select - The select element.
+ * @returns The `lang` attributes and the values, in option order.
+ */
+export async function optionAttributes(
+    select: Locator
+): Promise<{ langs: Array<string | null>; values: string[] }> {
+    return select.evaluate((element) => {
+        const options = [...element.querySelectorAll('option')];
+        return {
+            langs: options.map((option) => option.getAttribute('lang')),
+            values: options.map((option) => option.value),
+        };
+    });
 }

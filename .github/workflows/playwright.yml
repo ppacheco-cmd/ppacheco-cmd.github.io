@@ -32,13 +32,8 @@ jobs:
             - name: Install Playwright Chromium
               run: npx playwright install --with-deps chromium
 
-            - name: Playwright tests (TypeScript suite)
+            - name: Playwright tests
               run: npm run test:ci
-
-            - name: Legacy tests (being migrated)
-              run: npx playwright test -c legacy-tests/playwright.config.js
-              env:
-                  CI: 'true'
 
             - uses: actions/upload-artifact@v7
               if: failure()

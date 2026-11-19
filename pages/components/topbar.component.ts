@@ -1,7 +1,8 @@
 import { Locator, Page, expect } from '@playwright/test';
-import { LanguageCodes, ThemeLabels } from '../../enums/site/site';
+import { ThemeLabels } from '../../enums/site/site';
 import { AskUi } from '../../enums/site/ask';
 import { IconTestIds, TopBarLayout } from '../../enums/site/theme';
+import { FitTolerance, I18nTestIds } from '../../enums/site/i18n';
 
 /**
  * Component Object for the top bar shared by the home and resume pages:
@@ -13,11 +14,11 @@ export class TopBarComponent {
     // ==================== Locators ====================
 
     get brandLink(): Locator {
-        return this.page.getByRole('link', { name: /home/i });
+        return this.page.getByTestId(I18nTestIds.BRAND);
     }
 
     get mainNavigation(): Locator {
-        return this.page.getByRole('navigation', { name: 'Main' });
+        return this.page.getByRole('navigation');
     }
 
     get banner(): Locator {
@@ -36,12 +37,28 @@ export class TopBarComponent {
         });
     }
 
+    navLinkNamed(name: string): Locator {
+        return this.mainNavigation.getByRole('link', { name });
+    }
+
+    get languageSwitcher(): Locator {
+        return this.page.getByTestId(I18nTestIds.SWITCHER);
+    }
+
+    get languageCode(): Locator {
+        return this.page.getByTestId(I18nTestIds.CODE);
+    }
+
+    get navigationLinks(): Locator {
+        return this.mainNavigation.getByRole('link');
+    }
+
     get languageSelect(): Locator {
         return this.page.getByRole('combobox');
     }
 
     get themeToggle(): Locator {
-        return this.page.getByRole('button', { name: /dark mode|light mode/i });
+        return this.page.getByTestId(I18nTestIds.THEME_TOGGLE);
     }
 
     get switchToDarkButton(): Locator {
@@ -92,10 +109,10 @@ export class TopBarComponent {
     /**
      * Chooses a language in the language switcher.
      *
-     * @param {LanguageCodes} code - The language to switch to.
+     * @param {string} code - The language code to switch to, e.g. `pt`.
      * @returns {Promise<void>}
      */
-    async selectLanguage(code: LanguageCodes): Promise<void> {
+    async selectLanguage(code: string): Promise<void> {
         await this.languageSelect.selectOption(code);
     }
 
@@ -137,6 +154,59 @@ export class TopBarComponent {
     }
 
     // ==================== Verifications ====================
+
+    /**
+     * Verifies the language switcher sits between the navigation links and the
+     * theme toggle, and is tall enough to use.
+     *
+     * @returns {Promise<void>}
+     */
+    async switcherSitsBetweenNavAndToggleAndVerify(): Promise<void> {
+        const nav = await this.mainNavigation.boundingBox();
+        const switcher = await this.languageSwitcher.boundingBox();
+        const toggle = await this.themeToggle.boundingBox();
+        expect(nav).not.toBeNull();
+        expect(switcher).not.toBeNull();
+        expect(toggle).not.toBeNull();
+        if (!nav || !switcher || !toggle) return;
+        expect(switcher.x).toBeGreaterThanOrEqual(nav.x + nav.width);
+        expect(switcher.x + switcher.width).toBeLessThanOrEqual(
+            toggle.x + FitTolerance.SWITCHER_TO_TOGGLE
+        );
+        expect(switcher.height).toBeGreaterThanOrEqual(
+            FitTolerance.MIN_SWITCHER_HEIGHT
+        );
+    }
+
+    /**
+     * Verifies the four parts of the bar (badge, navigation, language switcher,
+     * toggle) all stay inside the screen width and do not overlap one another.
+     *
+     * @param {number} width - The viewport width being checked.
+     * @returns {Promise<void>}
+     */
+    async fitsWithoutOverlapAndVerify(width: number): Promise<void> {
+        const parts = [
+            this.brandLink,
+            this.mainNavigation,
+            this.languageSwitcher,
+            this.themeToggle,
+        ];
+        let previousRight = 0;
+        for (const part of parts) {
+            const box = await part.boundingBox();
+            expect(box).not.toBeNull();
+            if (!box) continue;
+            expect(box.x).toBeGreaterThanOrEqual(0);
+            expect(box.x + box.width).toBeLessThanOrEqual(
+                width + FitTolerance.RIGHT_EDGE
+            );
+            expect(previousRight).toBeLessThanOrEqual(
+                box.x + FitTolerance.OVERLAP
+            );
+            previousRight = box.x + box.width;
+        }
+    }
 
     /**
      * Verifies the bar spans the screen: the badge near the left edge, the
