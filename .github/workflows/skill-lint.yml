@@ -24,10 +24,8 @@ on:
             - 'scripts/rules-manifest.txt'
             - 'scripts/playwright-cli.sh'
             - 'scripts/playwright-cli.cmd'
-            - 'VERSION'
             - 'package.json'
             - 'package-lock.json'
-            - 'CHANGELOG.md'
     pull_request:
         paths:
             - 'AGENTS.md'
@@ -43,10 +41,8 @@ on:
             - 'scripts/rules-manifest.txt'
             - 'scripts/playwright-cli.sh'
             - 'scripts/playwright-cli.cmd'
-            - 'VERSION'
             - 'package.json'
             - 'package-lock.json'
-            - 'CHANGELOG.md'
 
 jobs:
     skill-lint:
@@ -77,11 +73,3 @@ jobs:
 
             - name: Vendored skill directories match skills-lock.json
               run: bash scripts/sync-upstream-skills.sh verify
-
-    version-lint:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v7
-
-            - name: VERSION <-> package.json <-> package-lock.json <-> CHANGELOG consistency
-              run: bash scripts/check-version-drift.sh

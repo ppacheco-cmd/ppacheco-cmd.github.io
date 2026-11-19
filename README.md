@@ -12,13 +12,13 @@ guarded by 272 automated tests.
 
 ## What you'll find
 
-| | |
-|---|---|
-| **Home** | Who I am, a one-click CV download, and a row of questions you can tap to get answers about my work. |
-| **Resume** | The full résumé as a web page, print-ready (two pages, in every language). |
-| **Four languages** | English, Portuguese (PT), Spanish and French. Auto-detected from your browser, or switch it yourself. |
-| **Light and dark** | Follows your system, remembers your choice. |
-| **Save-only CV button** | Clicking it saves the PDF and confirms it. It never opens a stray tab. |
+|                         |                                                                                                       |
+| ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| **Home**                | Who I am, a one-click CV download, and a row of questions you can tap to get answers about my work.   |
+| **Resume**              | The full résumé as a web page, print-ready (two pages, in every language).                            |
+| **Four languages**      | English, Portuguese (PT), Spanish and French. Auto-detected from your browser, or switch it yourself. |
+| **Light and dark**      | Follows your system, remembers your choice.                                                           |
+| **Save-only CV button** | Clicking it saves the PDF and confirms it. It never opens a stray tab.                                |
 
 ## Why the testing is the interesting part
 
@@ -96,4 +96,4 @@ The site's code and text are mine. The Figtree font is © its authors, under the
 
 ---
 
-*Hiring for QA? The résumé is [right here](https://ppacheco-cmd.github.io/resume.html), and I'm easy to reach through the links on the home page.*
+_Hiring for QA? The résumé is [right here](https://ppacheco-cmd.github.io/resume.html), and I'm easy to reach through the links on the home page._
