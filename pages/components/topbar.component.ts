@@ -1,6 +1,7 @@
-import { Locator, Page } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 import { LanguageCodes, ThemeLabels } from '../../enums/site/site';
 import { AskUi } from '../../enums/site/ask';
+import { IconTestIds, TopBarLayout } from '../../enums/site/theme';
 
 /**
  * Component Object for the top bar shared by the home and resume pages:
@@ -39,6 +40,10 @@ export class TopBarComponent {
         return this.page.getByRole('combobox');
     }
 
+    get themeToggle(): Locator {
+        return this.page.getByRole('button', { name: /dark mode|light mode/i });
+    }
+
     get switchToDarkButton(): Locator {
         return this.page.getByRole('button', { name: ThemeLabels.TO_DARK });
     }
@@ -47,7 +52,24 @@ export class TopBarComponent {
         return this.page.getByRole('button', { name: ThemeLabels.TO_LIGHT });
     }
 
+    get moonIcon(): Locator {
+        return this.page.getByTestId(IconTestIds.MOON);
+    }
+
+    get sunIcon(): Locator {
+        return this.page.getByTestId(IconTestIds.SUN);
+    }
+
     // ==================== Actions ====================
+
+    /**
+     * Clicks the brand badge, which leads back to the home page.
+     *
+     * @returns {Promise<void>}
+     */
+    async clickBrand(): Promise<void> {
+        await this.brandLink.click();
+    }
 
     /**
      * Follows the Resume link in the top bar.
@@ -93,5 +115,51 @@ export class TopBarComponent {
      */
     async switchToLight(): Promise<void> {
         await this.switchToLightButton.click();
+    }
+
+    /**
+     * Clicks the theme toggle, whichever way it currently switches.
+     *
+     * @returns {Promise<void>}
+     */
+    async clickToggle(): Promise<void> {
+        await this.themeToggle.click();
+    }
+
+    /**
+     * Presses a key while the focus is where it currently is.
+     *
+     * @param {string} key - A Playwright key name, e.g. `Tab` or `Enter`.
+     * @returns {Promise<void>}
+     */
+    async pressKey(key: string): Promise<void> {
+        await this.page.keyboard.press(key);
+    }
+
+    // ==================== Verifications ====================
+
+    /**
+     * Verifies the bar spans the screen: the badge near the left edge, the
+     * toggle icon near the right edge, and the navigation between them.
+     *
+     * @param {number} width - The viewport width being checked.
+     * @returns {Promise<void>}
+     */
+    async spansScreenAndVerify(width: number): Promise<void> {
+        const brand = await this.brandLink.boundingBox();
+        const toggle = await this.themeToggle.boundingBox();
+        const nav = await this.mainNavigation.boundingBox();
+        expect(brand).not.toBeNull();
+        expect(toggle).not.toBeNull();
+        expect(nav).not.toBeNull();
+        if (!brand || !toggle || !nav) return;
+        expect(brand.x).toBeGreaterThanOrEqual(TopBarLayout.EDGE_MIN);
+        expect(brand.x).toBeLessThanOrEqual(TopBarLayout.EDGE_MAX);
+        const iconRight =
+            toggle.x + toggle.width / 2 + TopBarLayout.TOGGLE_ICON_HALF;
+        expect(width - iconRight).toBeGreaterThanOrEqual(TopBarLayout.EDGE_MIN);
+        expect(width - iconRight).toBeLessThanOrEqual(TopBarLayout.EDGE_MAX);
+        expect(nav.x).toBeGreaterThan(brand.x + brand.width);
+        expect(nav.x + nav.width).toBeLessThanOrEqual(toggle.x);
     }
 }
