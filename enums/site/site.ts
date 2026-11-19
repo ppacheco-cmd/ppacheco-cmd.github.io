@@ -7,6 +7,7 @@
 export enum SiteRoutes {
     HOME = '/',
     RESUME = '/resume.html',
+    ASK_ANCHOR = '#ask',
 }
 
 /** Document titles */

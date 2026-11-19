@@ -29,18 +29,18 @@
   }
   </script>
 </head>
-<body data-page="resume">
+<body data-page="resume" data-testid="page">
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="index.html" aria-label="PP: Paulo Pacheco, home" data-i18n-attr="aria-label:c.brand">PP</a>
+      <a class="brand" data-testid="brand" href="index.html" aria-label="PP: Paulo Pacheco, home" data-i18n-attr="aria-label:c.brand">PP</a>
       <div class="topbar-actions">
         <nav class="topnav" aria-label="Main" data-i18n-attr="aria-label:c.navLabel">
           <a href="resume.html" aria-current="page" data-i18n="c.navResume">Resume</a>
           <a href="index.html#ask" data-i18n="c.navAsk">Ask</a>
         </nav>
-        <div class="lang">
+        <div class="lang" data-testid="lang-switcher">
           <svg class="lang-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-          <span class="lang-code" aria-hidden="true">EN</span>
+          <span class="lang-code" data-testid="lang-code" aria-hidden="true">EN</span>
           <select id="lang-select" aria-label="Language" data-i18n-attr="aria-label:c.lang">
             <option value="en" lang="en-US">English</option>
             <option value="pt" lang="pt-PT">Português</option>
@@ -48,7 +48,7 @@
             <option value="fr" lang="fr">Français</option>
           </select>
         </div>
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <button class="theme-toggle" id="theme-toggle" data-testid="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
           <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
           <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         </button>
@@ -60,9 +60,9 @@
     <header class="r-head">
       <h1>Paulo Pacheco</h1>
       <div class="role-line">
-        <p class="role" data-i18n="c.role">QA Engineer</p>
+        <p class="role" data-testid="role" data-i18n="c.role">QA Engineer</p>
         <button class="help" type="button" data-help aria-expanded="false" aria-controls="qa-help" aria-label="What does a QA engineer do?" data-i18n-attr="aria-label:c.help.label"><span aria-hidden="true">?</span></button>
-        <div class="help-pop" id="qa-help" hidden>
+        <div class="help-pop" id="qa-help" data-testid="qa-help" hidden>
           <p class="help-title" data-i18n="c.help.title">What does a QA engineer do?</p>
           <p data-i18n="c.help.intro">A QA (quality assurance) engineer makes sure software works as intended before it reaches real users. Typically they:</p>
           <ul>
@@ -80,10 +80,10 @@
         <li><a href="https://github.com/ppacheco-cmd" target="_blank" rel="noopener noreferrer">GitHub</a></li>
       </ul>
       <div class="actions no-print">
-        <a class="btn btn-primary cv-btn" href="cv/PauloPacheco_CV.pdf" download="PauloPacheco_CV.pdf" data-cv-link data-state="idle">
+        <a class="btn btn-primary cv-btn" href="cv/PauloPacheco_CV.pdf" download="PauloPacheco_CV.pdf" data-cv-link data-state="idle" data-testid="cv-button">
           <span class="cv-icons" aria-hidden="true">
-            <svg class="cv-ico cv-ico-idle" viewBox="0 0 16 16" focusable="false"><path d="M7.25 1.5a.75.75 0 0 1 1.5 0v6.69l2.22-2.22a.75.75 0 1 1 1.06 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-3.5-3.5a.75.75 0 0 1 1.06-1.06l2.22 2.22V1.5ZM2.5 11.25a.75.75 0 0 1 1.5 0v1.5c0 .14.11.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 11.75 14.5h-7.5A1.75 1.75 0 0 1 2.5 12.75v-1.5Z"/></svg>
-            <svg class="cv-ico cv-ico-done" viewBox="0 0 16 16" focusable="false"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            <svg class="cv-ico cv-ico-idle" data-testid="cv-icon-idle" viewBox="0 0 16 16" focusable="false"><path d="M7.25 1.5a.75.75 0 0 1 1.5 0v6.69l2.22-2.22a.75.75 0 1 1 1.06 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-3.5-3.5a.75.75 0 0 1 1.06-1.06l2.22 2.22V1.5ZM2.5 11.25a.75.75 0 0 1 1.5 0v1.5c0 .14.11.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 11.75 14.5h-7.5A1.75 1.75 0 0 1 2.5 12.75v-1.5Z"/></svg>
+            <svg class="cv-ico cv-ico-done" data-testid="cv-icon-done" viewBox="0 0 16 16" focusable="false"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
           </span>
           <span class="cv-labels">
             <span class="cv-label cv-label-idle" data-i18n="r.cvIdle">Download PDF</span>
@@ -96,7 +96,7 @@
 
     <section class="r-section" aria-labelledby="h-summary">
       <h2 id="h-summary" data-i18n="r.h.summary">Summary</h2>
-      <p data-i18n="r.summary">QA Engineer with 2 years in QA and 3+ years of prior backend engineering, with a healthcare software background. Experienced in test design and execution, shift-left quality, and building test automation frameworks and AI-driven workflows to automate repetitive QA work. Driven by the opportunity to deliver high-quality, safe services to individuals through better software.</p>
+      <p data-testid="summary" data-i18n="r.summary">QA Engineer with 2 years in QA and 3+ years of prior backend engineering, with a healthcare software background. Experienced in test design and execution, shift-left quality, and building test automation frameworks and AI-driven workflows to automate repetitive QA work. Driven by the opportunity to deliver high-quality, safe services to individuals through better software.</p>
     </section>
 
     <section class="r-section" aria-labelledby="h-skills">
@@ -108,13 +108,13 @@
 
     <section class="r-section" aria-labelledby="h-education">
       <h2 id="h-education" data-i18n="r.h.education">Education</h2>
-      <article class="job">
+      <article class="job" data-testid="job-education">
         <div class="job-head">
           <div>
             <h3><a href="https://www.uminho.pt/pt/_layouts/15/uminho.portalum.ui/pages/catalogocursodetail.aspx?cid=t000076&amp;catid=6" target="_blank" rel="noopener noreferrer" data-i18n="r.edu.degree">Integrated MSc in Informatics Engineering</a></h3>
             <p class="job-title" data-i18n="r.edu.school">University of Minho, Braga, Portugal</p>
           </div>
-          <p class="job-meta">Braga, Portugal<br><time datetime="2015-09">Sep 2015</time> - <time datetime="2021-03">Mar 2021</time></p>
+          <p class="job-meta" data-testid="job-dates">Braga, Portugal<br><time datetime="2015-09">Sep 2015</time> - <time datetime="2021-03">Mar 2021</time></p>
         </div>
         <div class="sub" style="margin-top:12px">
           <h3 data-i18n="r.edu.s1t">Specialization 1: Software Systems Engineering</h3>
@@ -130,90 +130,90 @@
     <section class="r-section" aria-labelledby="h-experience">
       <h2 id="h-experience" data-i18n="r.h.experience">Professional Experience</h2>
 
-      <article class="job">
+      <article class="job" data-testid="job-euronext">
         <div class="job-head">
           <div>
             <h3><a href="https://www.euronext.com" target="_blank" rel="noopener noreferrer">Euronext</a> <small data-i18n="r.via">(via Quanteam)</small></h3>
             <p class="job-title" data-i18n="c.role">QA Engineer</p>
           </div>
-          <p class="job-meta">Porto, Portugal<br><time datetime="2026-07">Jul 2026</time> - <span data-i18n="r.current">Present</span></p>
+          <p class="job-meta" data-testid="job-dates">Porto, Portugal<br><time datetime="2026-07">Jul 2026</time> - <span data-i18n="r.current">Present</span></p>
         </div>
-        <p class="job-tools"><span data-i18n="r.tools">Tools</span>: GitLab, XRay, Gherkin, Agile, Confluence, Jira, Microsoft Copilot, Claude</p>
+        <p class="job-tools" data-testid="job-tools"><span data-testid="job-tools-label" data-i18n="r.tools">Tools</span>: GitLab, XRay, Gherkin, Agile, Confluence, Jira, Microsoft Copilot, Claude</p>
         <p class="job-desc" data-i18n="r.eu.desc">Euronext is the leading pan-European stock exchange, connecting diverse economies to global capital markets.</p>
         <ul>
-          <li data-i18n="r.eu.b1"><strong>Developed a multi-agent system to automate QA workflows:</strong> Built a pipeline of LLM-based AI agents: one to parse Epics and documentation into structured runbooks with test cases, and a second to format data for seamless <em>XRay</em> importing, reducing manual test-design effort.</li>
-          <li data-i18n="r.eu.b2"><strong>Authored and validated runbooks:</strong> Translated product documentation into acceptance criteria, test cases and test scenarios, collaborating directly with the Test Manager for formal validation and sign-off.</li>
-          <li data-i18n="r.eu.b3"><strong>Executed test plans and evidence compliance:</strong> Managed active test cycles and documented execution evidence to ensure software quality. Collaborate with developers, product managers and peers to ensure high-quality software delivery.</li>
+          <li data-testid="r.eu.b1" data-i18n="r.eu.b1"><strong>Developed a multi-agent system to automate QA workflows:</strong> Built a pipeline of LLM-based AI agents: one to parse Epics and documentation into structured runbooks with test cases, and a second to format data for seamless <em>XRay</em> importing, reducing manual test-design effort.</li>
+          <li data-testid="r.eu.b2" data-i18n="r.eu.b2"><strong>Authored and validated runbooks:</strong> Translated product documentation into acceptance criteria, test cases and test scenarios, collaborating directly with the Test Manager for formal validation and sign-off.</li>
+          <li data-testid="r.eu.b3" data-i18n="r.eu.b3"><strong>Executed test plans and evidence compliance:</strong> Managed active test cycles and documented execution evidence to ensure software quality. Collaborate with developers, product managers and peers to ensure high-quality software delivery.</li>
         </ul>
       </article>
 
-      <article class="job">
+      <article class="job" data-testid="job-promptly-qa">
         <div class="job-head">
           <div>
             <h3><a href="https://promptlyhealth.com/en/solutions/data-collection" target="_blank" rel="noopener noreferrer">Promptly Health</a></h3>
             <p class="job-title" data-i18n="c.role">QA Engineer</p>
           </div>
-          <p class="job-meta">Porto, Portugal<br><time datetime="2024-11">Nov 2024</time> - <time datetime="2026-06">Jun 2026</time><span class="dur" data-i18n="r.dur.qa">1 yr 8 mos</span></p>
+          <p class="job-meta" data-testid="job-dates">Porto, Portugal<br><time datetime="2024-11">Nov 2024</time> - <time datetime="2026-06">Jun 2026</time><span class="dur" data-testid="job-duration" data-i18n="r.dur.qa">1 yr 8 mos</span></p>
         </div>
-        <p class="job-tools"><span data-i18n="r.tools">Tools</span>: GitHub, GitHub Actions, Agile, Jira, Playwright, Python, Postman, Sentry, Grafana, Claude Code</p>
+        <p class="job-tools" data-testid="job-tools"><span data-testid="job-tools-label" data-i18n="r.tools">Tools</span>: GitHub, GitHub Actions, Agile, Jira, Playwright, Python, Postman, Sentry, Grafana, Claude Code</p>
         <p class="job-desc" data-i18n="r.pq.desc">Real-World Evidence company that collects, integrates, and analyses data on the outcomes of care.</p>
         <ul>
-          <li data-i18n="r.pq.b1"><strong>Introduced E2E test automation from zero</strong>, designing and building the framework with Playwright and GitHub Actions: an automated E2E regression suite covering critical user flows, run nightly.</li>
-          <li data-i18n="r.pq.b2"><strong>Shift left testing:</strong> reviewed acceptance criteria and tickets with the Product Owner, Designer, and Tech Lead before stories enter the sprint, reducing ambiguity and rework.</li>
-          <li data-i18n="r.pq.b3"><strong>Adopted Playwright MCP</strong> to drive exploratory browser testing and generate tests from acceptance criteria and test cases, shortening the path from spec to working tests.</li>
-          <li data-i18n="r.pq.b4"><strong>Investigated production issues</strong> with <em>Sentry</em> and <em>Grafana</em>; read the codebase to provide preliminary root-cause analysis alongside each bug report, aiming to reduce developer triage time.</li>
-          <li data-i18n="r.pq.b5"><strong>Sole QA Engineer</strong> in the team: wrote acceptance criteria and test cases, performed manual functional, exploratory and UAT testing, and reported and tracked defects in Jira.</li>
-          <li data-i18n="r.pq.b6">Served as a product support member, assisting teams with troubleshooting.</li>
+          <li data-testid="r.pq.b1" data-i18n="r.pq.b1"><strong>Introduced E2E test automation from zero</strong>, designing and building the framework with Playwright and GitHub Actions: an automated E2E regression suite covering critical user flows, run nightly.</li>
+          <li data-testid="r.pq.b2" data-i18n="r.pq.b2"><strong>Shift left testing:</strong> reviewed acceptance criteria and tickets with the Product Owner, Designer, and Tech Lead before stories enter the sprint, reducing ambiguity and rework.</li>
+          <li data-testid="r.pq.b3" data-i18n="r.pq.b3"><strong>Adopted Playwright MCP</strong> to drive exploratory browser testing and generate tests from acceptance criteria and test cases, shortening the path from spec to working tests.</li>
+          <li data-testid="r.pq.b4" data-i18n="r.pq.b4"><strong>Investigated production issues</strong> with <em>Sentry</em> and <em>Grafana</em>; read the codebase to provide preliminary root-cause analysis alongside each bug report, aiming to reduce developer triage time.</li>
+          <li data-testid="r.pq.b5" data-i18n="r.pq.b5"><strong>Sole QA Engineer</strong> in the team: wrote acceptance criteria and test cases, performed manual functional, exploratory and UAT testing, and reported and tracked defects in Jira.</li>
+          <li data-testid="r.pq.b6" data-i18n="r.pq.b6">Served as a product support member, assisting teams with troubleshooting.</li>
         </ul>
       </article>
 
-      <article class="job">
+      <article class="job" data-testid="job-promptly-backend">
         <div class="job-head">
           <div>
             <h3><a href="https://promptlyhealth.com/en/solutions/data-collection" target="_blank" rel="noopener noreferrer">Promptly Health</a></h3>
             <p class="job-title" data-i18n="r.role.be">Software Engineer - Backend</p>
           </div>
-          <p class="job-meta">Porto, Portugal<br><time datetime="2021-05">May 2021</time> - <time datetime="2024-11">Nov 2024</time><span class="dur" data-i18n="r.dur.be">3 yrs 7 mos</span></p>
+          <p class="job-meta" data-testid="job-dates">Porto, Portugal<br><time datetime="2021-05">May 2021</time> - <time datetime="2024-11">Nov 2024</time><span class="dur" data-testid="job-duration" data-i18n="r.dur.be">3 yrs 7 mos</span></p>
         </div>
-        <p class="job-tools"><span data-i18n="r.tools">Tools</span>: Python, Django, Pytest, SQL, PostgreSQL, RESTful APIs, Postman, TDD, AWS, CloudWatch, Git, GitHub, Jira</p>
+        <p class="job-tools" data-testid="job-tools"><span data-testid="job-tools-label" data-i18n="r.tools">Tools</span>: Python, Django, Pytest, SQL, PostgreSQL, RESTful APIs, Postman, TDD, AWS, CloudWatch, Git, GitHub, Jira</p>
         <p class="job-desc" data-i18n="r.pb.desc">Real-World Evidence company, collecting, integrating and analysing data on the outcomes of care.</p>
         <ul>
-          <li data-i18n="r.pb.b1"><strong>Developed the backend</strong> of the patient-centric platform alongside the team, using Django, Python, Pytest, and PostgreSQL.</li>
-          <li data-i18n="r.pb.b2"><strong>Designed, implemented and tested APIs</strong> to collect and retrieve patient-reported and clinician-reported outcome measures, including mental health questionnaires, using Pytest unit tests.</li>
-          <li data-i18n="r.pb.b3"><strong>Owned bug fixes</strong> across the codebase given my in-depth knowledge of it, shipping quick fixes to clients while adhering to CI/CD principles.</li>
-          <li data-i18n="r.pb.b4"><strong>Engaged customers and product managers</strong> to better understand pain points and shape product improvements.</li>
-          <li data-i18n="r.pb.b5"><strong>Collaborated with the Delivery team</strong> on workflow changes that helped them ship features to clients faster.</li>
+          <li data-testid="r.pb.b1" data-i18n="r.pb.b1"><strong>Developed the backend</strong> of the patient-centric platform alongside the team, using Django, Python, Pytest, and PostgreSQL.</li>
+          <li data-testid="r.pb.b2" data-i18n="r.pb.b2"><strong>Designed, implemented and tested APIs</strong> to collect and retrieve patient-reported and clinician-reported outcome measures, including mental health questionnaires, using Pytest unit tests.</li>
+          <li data-testid="r.pb.b3" data-i18n="r.pb.b3"><strong>Owned bug fixes</strong> across the codebase given my in-depth knowledge of it, shipping quick fixes to clients while adhering to CI/CD principles.</li>
+          <li data-testid="r.pb.b4" data-i18n="r.pb.b4"><strong>Engaged customers and product managers</strong> to better understand pain points and shape product improvements.</li>
+          <li data-testid="r.pb.b5" data-i18n="r.pb.b5"><strong>Collaborated with the Delivery team</strong> on workflow changes that helped them ship features to clients faster.</li>
         </ul>
       </article>
     </section>
 
     <section class="r-section" aria-labelledby="h-projects">
       <h2 id="h-projects" data-i18n="r.h.projects">Projects</h2>
-      <article class="job">
+      <article class="job" data-testid="project-kiosk">
         <div class="job-head">
           <div>
             <h3 data-i18n="r.pr.title">Self-service Kiosk-based Anamnesis System for Emergency Departments</h3>
             <p class="job-title"><span data-i18n="r.pr.thesis">Thesis project:</span> <a href="https://repositorium.sdum.uminho.pt/handle/1822/83363" target="_blank" rel="noopener noreferrer" data-i18n="r.pr.thesisLink">MSc thesis</a></p>
           </div>
-          <p class="job-meta"><time datetime="2019-10">Oct 2019</time> - <time datetime="2021-03">Mar 2021</time></p>
+          <p class="job-meta" data-testid="job-dates"><time datetime="2019-10">Oct 2019</time> - <time datetime="2021-03">Mar 2021</time></p>
         </div>
-        <p class="job-tools"><span data-i18n="r.tools">Tools</span>: Java, Android Studio, React.js, Node.js, Express, MySQL, ETL, Data Warehouse, JSON</p>
+        <p class="job-tools" data-testid="job-tools"><span data-testid="job-tools-label" data-i18n="r.tools">Tools</span>: Java, Android Studio, React.js, Node.js, Express, MySQL, ETL, Data Warehouse, JSON</p>
         <p class="job-desc" data-i18n="r.pr.desc">Built a self-service kiosk to assist emergency department physicians with patient anamnesis at Centro Hospitalar Universitário de São João (CHUSJ), Porto.</p>
         <ul>
-          <li data-i18n="r.pr.b1"><strong>Led the technical implementation and full-stack development:</strong> built the React frontend used by physicians and a Node.js + Express REST API backed by MySQL.</li>
-          <li data-i18n="r.pr.b2"><strong>Built a standalone Android app in Java</strong> (Android Studio) for patients to enter clinical data, including modules to read personal data from the citizen card and to capture blood pressure, oxygen saturation, and temperature from Bluetooth-connected biometric sensors.</li>
-          <li data-i18n="r.pr.b3"><strong>Reduced anamnesis process time by ~16%</strong> in field tests conducted at CHUSJ.</li>
+          <li data-testid="r.pr.b1" data-i18n="r.pr.b1"><strong>Led the technical implementation and full-stack development:</strong> built the React frontend used by physicians and a Node.js + Express REST API backed by MySQL.</li>
+          <li data-testid="r.pr.b2" data-i18n="r.pr.b2"><strong>Built a standalone Android app in Java</strong> (Android Studio) for patients to enter clinical data, including modules to read personal data from the citizen card and to capture blood pressure, oxygen saturation, and temperature from Bluetooth-connected biometric sensors.</li>
+          <li data-testid="r.pr.b3" data-i18n="r.pr.b3"><strong>Reduced anamnesis process time by ~16%</strong> in field tests conducted at CHUSJ.</li>
         </ul>
       </article>
     </section>
 
     <section class="r-section" aria-labelledby="h-publications">
       <h2 id="h-publications" data-i18n="r.h.publications">Publications</h2>
-      <p class="pub">P. Pacheco et al., (2020). "Designing Effective User Interface Experiences for a Self-Service Kiosk to Reduce Emergency Department Crowding," 2020 IEEE 8th International Conference on Serious Games and Applications for Health (SeGAH), Vancouver, BC, Canada, pp. 1-8, doi: <a href="https://ieeexplore.ieee.org/document/9201858" target="_blank" rel="noopener noreferrer">10.1109/SeGAH49190.2020.9201858</a>.</p>
-      <p class="pub">E. Oliveira et al., (2023). "The Role of Kiosks on Health Services: A Systematic Review," 2023 IEEE 11th International Conference on SeGAH, Athens, Greece, pp. 1-6, doi: <a href="https://ieeexplore.ieee.org/document/10253807" target="_blank" rel="noopener noreferrer">10.1109/SeGAH57547.2023.10253807</a>.</p>
+      <p class="pub" data-testid="publication">P. Pacheco et al., (2020). "Designing Effective User Interface Experiences for a Self-Service Kiosk to Reduce Emergency Department Crowding," 2020 IEEE 8th International Conference on Serious Games and Applications for Health (SeGAH), Vancouver, BC, Canada, pp. 1-8, doi: <a href="https://ieeexplore.ieee.org/document/9201858" target="_blank" rel="noopener noreferrer">10.1109/SeGAH49190.2020.9201858</a>.</p>
+      <p class="pub" data-testid="publication">E. Oliveira et al., (2023). "The Role of Kiosks on Health Services: A Systematic Review," 2023 IEEE 11th International Conference on SeGAH, Athens, Greece, pp. 1-6, doi: <a href="https://ieeexplore.ieee.org/document/10253807" target="_blank" rel="noopener noreferrer">10.1109/SeGAH57547.2023.10253807</a>.</p>
     </section>
 
-    <section class="r-section" aria-labelledby="h-languages">
+    <section class="r-section" aria-labelledby="h-languages" data-testid="languages">
       <h2 id="h-languages" data-i18n="r.h.languages">Languages &amp; Certifications</h2>
       <p class="r-kv"><strong data-i18n="r.lang.label">Languages:</strong> <span data-i18n="r.lang.value">Portuguese (Native), English - B2</span></p>
       <p class="r-kv"><strong data-i18n="r.cert.label">Certifications:</strong> <a href="https://www.istqb.org/certifications/certified-tester-foundation-level" target="_blank" rel="noopener noreferrer">ISTQB® Certified Tester Foundation Level 4.0</a></p>

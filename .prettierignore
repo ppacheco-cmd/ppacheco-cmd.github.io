@@ -30,11 +30,10 @@ packages/create-agentic-playwright/template/
 .github/FUNDING.yml
 
 # The site itself (hand-written HTML/CSS/JS and the generated translation
-# bundle) and the legacy JavaScript suite keep their own style. Only the
+# bundle) keeps its own style. Only the
 # TypeScript test layer, config and docs are held to Prettier.
 assets/
 index.html
 resume.html
-legacy-tests/
 scripts/lighthouse.mjs
 scripts/serve.js

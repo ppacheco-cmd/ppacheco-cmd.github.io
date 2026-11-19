@@ -31,11 +31,9 @@
         "skills:verify": "bash scripts/sync-upstream-skills.sh verify",
         "skills:reinstall": "bash scripts/sync-upstream-skills.sh reinstall",
         "skills:update": "bash scripts/sync-upstream-skills.sh update",
-        "test:legacy": "playwright test -c legacy-tests/playwright.config.js",
-        "test:legacy:a11y": "playwright test -c legacy-tests/playwright.config.js a11y.spec.js",
         "lighthouse": "node scripts/lighthouse.mjs",
         "serve": "node scripts/serve.js",
-        "check": "npm run lint && npm test && npm run test:legacy && node scripts/lighthouse.mjs",
+        "check": "npm run lint && npm test && node scripts/lighthouse.mjs",
         "postinstall": "is-ci || husky"
     },
     "devDependencies": {
