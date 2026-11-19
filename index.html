@@ -46,9 +46,9 @@
       <div class="hero">
         <h1>Paulo Pacheco</h1>
         <div class="role-line">
-          <p class="role" data-i18n="c.role">QA Engineer</p>
+          <p class="role" data-testid="role" data-i18n="c.role">QA Engineer</p>
           <button class="help" type="button" data-help aria-expanded="false" aria-controls="qa-help" aria-label="What does a QA engineer do?" data-i18n-attr="aria-label:c.help.label"><span aria-hidden="true">?</span></button>
-          <div class="help-pop" id="qa-help" hidden>
+          <div class="help-pop" id="qa-help" data-testid="qa-help" hidden>
             <p class="help-title" data-i18n="c.help.title">What does a QA engineer do?</p>
             <p data-i18n="c.help.intro">A QA (quality assurance) engineer makes sure software works as intended before it reaches real users. Typically they:</p>
             <ul>
@@ -89,7 +89,7 @@
         <h2 id="ask-title" data-i18n="i.askTitle">Ask about my background</h2>
         <p class="ask-sub" data-i18n="i.askSub">Pick a question. The answers are written from my resume.</p>
         <div class="chips" id="chips" role="group" aria-label="Questions about my background" data-i18n-attr="aria-label:i.groupLabel"></div>
-        <div class="answer" id="answer" aria-live="polite">
+        <div class="answer" id="answer" data-testid="answer" aria-live="polite">
           <p class="answer-hint" data-i18n="i.askHint">Select a question above to see the answer.</p>
         </div>
         <noscript><p class="ask-sub">This section needs JavaScript. The same details are on the <a href="resume.html">resume page</a>.</p></noscript>

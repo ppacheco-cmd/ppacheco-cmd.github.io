@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import { LanguageCodes, ThemeLabels } from '../../enums/site/site';
+import { AskUi } from '../../enums/site/ask';
 
 /**
  * Component Object for the top bar shared by the home and resume pages:
@@ -18,6 +19,22 @@ export class TopBarComponent {
         return this.page.getByRole('navigation', { name: 'Main' });
     }
 
+    get banner(): Locator {
+        return this.page.getByRole('banner');
+    }
+
+    get resumeLink(): Locator {
+        return this.mainNavigation.getByRole('link', {
+            name: AskUi.RESUME_LINK,
+        });
+    }
+
+    get askLink(): Locator {
+        return this.mainNavigation.getByRole('link', {
+            name: AskUi.ASK_LINK,
+        });
+    }
+
     get languageSelect(): Locator {
         return this.page.getByRole('combobox');
     }
@@ -31,6 +48,24 @@ export class TopBarComponent {
     }
 
     // ==================== Actions ====================
+
+    /**
+     * Follows the Resume link in the top bar.
+     *
+     * @returns {Promise<void>}
+     */
+    async clickResume(): Promise<void> {
+        await this.resumeLink.click();
+    }
+
+    /**
+     * Follows the Ask link in the top bar.
+     *
+     * @returns {Promise<void>}
+     */
+    async clickAsk(): Promise<void> {
+        await this.askLink.click();
+    }
 
     /**
      * Chooses a language in the language switcher.

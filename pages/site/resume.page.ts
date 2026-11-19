@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import { TopBarComponent } from '../components/topbar.component';
+import { HelpComponent } from '../components/help.component';
 import { ResumeSections, SiteRoutes } from '../../enums/site/site';
 
 /**
@@ -7,9 +8,11 @@ import { ResumeSections, SiteRoutes } from '../../enums/site/site';
  */
 export class ResumePage {
     readonly topBar: TopBarComponent;
+    readonly help: HelpComponent;
 
     constructor(private readonly page: Page) {
         this.topBar = new TopBarComponent(page);
+        this.help = new HelpComponent(page);
     }
 
     // ==================== Locators ====================
@@ -22,6 +25,18 @@ export class ResumePage {
         return this.page
             .getByRole('region', { name: ResumeSections.SKILLS })
             .getByRole('paragraph');
+    }
+
+    get experienceRegion(): Locator {
+        return this.page.getByRole('region', {
+            name: ResumeSections.EXPERIENCE,
+        });
+    }
+
+    get languagesRegion(): Locator {
+        return this.page.getByRole('region', {
+            name: ResumeSections.LANGUAGES,
+        });
     }
 
     get dates(): Locator {
