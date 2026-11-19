@@ -28,7 +28,7 @@ export class HomePage {
 
     // ==================== Locators ====================
 
-    get pageBody(): Locator {
+    get documentBody(): Locator {
         return this.page.getByTestId(PageTestIds.PAGE);
     }
 
@@ -200,6 +200,15 @@ export class HomePage {
      */
     async answerText(): Promise<string> {
         return (await this.answerPanel.innerText()).trim();
+    }
+
+    /**
+     * Reads all the text on the page as the visitor sees it.
+     *
+     * @returns {Promise<string>} The visible text of the whole page.
+     */
+    async bodyText(): Promise<string> {
+        return this.documentBody.innerText();
     }
 
     // ==================== Verifications ====================

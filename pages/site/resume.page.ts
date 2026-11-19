@@ -30,7 +30,7 @@ export class ResumePage {
         return this.page.getByRole('main');
     }
 
-    get pageBody(): Locator {
+    get documentBody(): Locator {
         return this.page.getByTestId(PageTestIds.PAGE);
     }
 
@@ -170,6 +170,15 @@ export class ResumePage {
             values.push((await date.getAttribute('datetime')) ?? '');
         }
         return values;
+    }
+
+    /**
+     * Reads all the text on the page as the visitor sees it.
+     *
+     * @returns {Promise<string>} The visible text of the whole page.
+     */
+    async bodyText(): Promise<string> {
+        return this.documentBody.innerText();
     }
 
     // ==================== Verifications ====================

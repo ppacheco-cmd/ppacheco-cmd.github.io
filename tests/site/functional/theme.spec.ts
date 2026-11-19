@@ -38,7 +38,7 @@ test.describe('Theme: system default', () => {
                 async ({ homePage, page }) => {
                     await homePage.open();
                     await expect.poll(() => documentTheme(page)).toBe(theme);
-                    await expect(homePage.pageBody).toHaveCSS(
+                    await expect(homePage.documentBody).toHaveCSS(
                         'background-color',
                         background
                     );
@@ -119,7 +119,7 @@ test.describe('Theme toggle', () => {
                 await expect
                     .poll(() => documentTheme(page))
                     .toBe(ThemeValues.DARK);
-                await expect(homePage.pageBody).toHaveCSS(
+                await expect(homePage.documentBody).toHaveCSS(
                     'background-color',
                     ThemeColors.PAGE_BG_DARK
                 );
@@ -139,7 +139,7 @@ test.describe('Theme toggle', () => {
                 await expect
                     .poll(() => documentTheme(page))
                     .toBe(ThemeValues.LIGHT);
-                await expect(homePage.pageBody).toHaveCSS(
+                await expect(homePage.documentBody).toHaveCSS(
                     'background-color',
                     ThemeColors.PAGE_BG_LIGHT
                 );
@@ -194,7 +194,7 @@ test.describe('Theme toggle', () => {
                 await expect
                     .poll(() => documentTheme(page))
                     .toBe(ThemeValues.DARK);
-                await expect(homePage.pageBody).toHaveCSS(
+                await expect(homePage.documentBody).toHaveCSS(
                     'background-color',
                     ThemeColors.PAGE_BG_DARK
                 );

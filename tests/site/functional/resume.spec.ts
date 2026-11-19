@@ -260,7 +260,7 @@ test.describe('Resume page: theme and print', () => {
                     await expect(
                         resumePage.topBar.switchToLightButton
                     ).toBeVisible();
-                    await expect(resumePage.pageBody).toHaveCSS(
+                    await expect(resumePage.documentBody).toHaveCSS(
                         'background-color',
                         ThemeColors.PAGE_BG_DARK
                     );
@@ -292,7 +292,7 @@ test.describe('Resume page: theme and print', () => {
                     await expect(
                         resumePage.topBar.switchToDarkButton
                     ).toBeVisible();
-                    await expect(resumePage.pageBody).toHaveCSS(
+                    await expect(resumePage.documentBody).toHaveCSS(
                         'background-color',
                         ThemeColors.PAGE_BG_LIGHT
                     );
@@ -316,11 +316,11 @@ test.describe('Resume page: theme and print', () => {
                 await test.step('THEN the chrome is hidden and the page is black on white', async () => {
                     await expect(resumePage.topBar.banner).toBeHidden();
                     await expect(resumePage.pdfLink).toBeHidden();
-                    await expect(resumePage.pageBody).toHaveCSS(
+                    await expect(resumePage.documentBody).toHaveCSS(
                         'background-color',
                         ThemeColors.PAGE_BG_LIGHT
                     );
-                    await expect(resumePage.pageBody).toHaveCSS(
+                    await expect(resumePage.documentBody).toHaveCSS(
                         'color',
                         PrintColors.INK
                     );
