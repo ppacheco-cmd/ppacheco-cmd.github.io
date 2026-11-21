@@ -2,8 +2,8 @@
 
 **Live site: [ppacheco-cmd.github.io](https://ppacheco-cmd.github.io)**
 
-A QA engineer's personal site: small, fast,
-accessible, and **tested**.
+A QA engineer's personal site: small, fast, accessible, and **tested**.
+
 ---
 
 ## What you'll find
