@@ -95,6 +95,26 @@
         <noscript><p class="ask-sub">This section needs JavaScript. The same details are on the <a href="resume.html">resume page</a>.</p></noscript>
       </div>
     </section>
+
+    <section class="projects" id="projects" data-testid="projects" aria-labelledby="projects-title">
+      <div class="projects-inner">
+        <h2 id="projects-title" data-i18n="i.projTitle">Projects</h2>
+        <p class="projects-sub" data-i18n="i.projSub">Things I build and test on my own.</p>
+        <article class="project-card" data-testid="project-card">
+          <h3 data-i18n="i.projName">This website and its test suite</h3>
+          <p data-i18n="i.projDesc">A personal site in four languages, built with plain HTML, CSS and JavaScript, with no framework or build step. It is tested with Playwright and TypeScript (page objects), axe-core accessibility scans and a Lighthouse quality gate.</p>
+          <ul class="project-tags" data-i18n-attr="aria-label:i.projTags" aria-label="Technologies used">
+            <li>Playwright</li>
+            <li>TypeScript</li>
+            <li>axe-core</li>
+            <li>Lighthouse</li>
+            <li>GitHub Actions</li>
+            <li>HTML, CSS, JavaScript</li>
+          </ul>
+          <p class="project-more"><a href="https://github.com/ppacheco-cmd/ppacheco-cmd.github.io" target="_blank" rel="noopener noreferrer" data-testid="project-link" data-i18n="i.projLink">View the code on GitHub</a></p>
+        </article>
+      </div>
+    </section>
   </main>
 
   <!-- Question and answer content. Every answer must be supported by the resume. -->
