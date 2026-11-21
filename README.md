@@ -2,12 +2,8 @@
 
 **Live site: [ppacheco-cmd.github.io](https://ppacheco-cmd.github.io)**
 
-A QA engineer's personal site, built the way a QA engineer would build it: small, fast,
-accessible, and **tested like it matters**.
-
-No framework. No build step. No tracking. Just HTML, CSS and a little vanilla JavaScript,
-guarded by 272 automated tests.
-
+A QA engineer's personal site: small, fast,
+accessible, and **tested**.
 ---
 
 ## What you'll find
