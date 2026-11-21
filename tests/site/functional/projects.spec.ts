@@ -9,6 +9,8 @@ import {
 } from '../../../enums/site/help';
 import { OTHER_LANGUAGES } from '../../../enums/site/i18n';
 import {
+    PipelineAnchors,
+    PipelineText,
     ProjectAnchors,
     ProjectLinkRules,
     ProjectTags,
@@ -136,6 +138,84 @@ for (const code of OTHER_LANGUAGES) {
                     ProjectAnchors[code].link
                 );
                 await expect(homePage.projectTags).toHaveText([...ProjectTags]);
+            }
+        );
+    });
+}
+
+test.describe('Pipelines block', () => {
+    test.use({ colorScheme: ColorSchemes.LIGHT, locale: 'en-US' });
+
+    test(
+        'should describe the three pipelines in order, with what each one runs',
+        { tag: '@smoke' },
+        async ({ homePage }) => {
+            await homePage.open();
+            await expect(homePage.pipelinesHeading).toHaveText(
+                PipelineText.TITLE
+            );
+            await expect(homePage.projectsSection).toContainText(
+                PipelineText.INTRO
+            );
+            await expect(homePage.pipelineNames).toHaveText([
+                PipelineText.COMMIT_NAME,
+                PipelineText.MAIN_NAME,
+                PipelineText.NIGHT_NAME,
+            ]);
+            await expect(homePage.pipelineItems).toContainText([
+                PipelineText.COMMIT_DESCRIPTION,
+                PipelineText.MAIN_DESCRIPTION,
+                PipelineText.NIGHT_DESCRIPTION,
+            ]);
+        }
+    );
+});
+
+test.describe('Pipelines block on a phone', () => {
+    test.use({
+        viewport: { width: PhoneViewport.WIDTH, height: PhoneViewport.HEIGHT },
+        colorScheme: ColorSchemes.LIGHT,
+        locale: 'en-US',
+    });
+
+    test(
+        'should stack the three pipelines without scrolling sideways',
+        { tag: '@regression' },
+        async ({ homePage, page }) => {
+            await homePage.open();
+            await expect(homePage.pipelineItems).toHaveCount(3);
+            await expect(homePage.pipelinesHeading).toBeVisible();
+            expect(await horizontalOverflow(page)).toBeLessThanOrEqual(
+                LayoutLimits.MAX_HORIZONTAL_OVERFLOW
+            );
+        }
+    );
+});
+
+for (const code of OTHER_LANGUAGES) {
+    const dictionary = dictionaries[code];
+
+    test.describe(`Pipelines block in ${code}`, () => {
+        test.use({ colorScheme: ColorSchemes.LIGHT, locale: 'en-US' });
+
+        test(
+            'should be translated, with the same three pipelines',
+            { tag: '@regression' },
+            async ({ homePage, page }) => {
+                await homePage.open();
+                await homePage.topBar.selectLanguage(code);
+                await expect.poll(() => documentDataLang(page)).toBe(code);
+                await expect(homePage.pipelinesHeading).toHaveText(
+                    PipelineAnchors[code].title
+                );
+                await expect(homePage.pipelineNames).toHaveText([
+                    ...PipelineAnchors[code].names,
+                ]);
+                await expect(homePage.pipelineItems).toContainText([
+                    dictionary.strings['i.pipeCommitDesc'],
+                    dictionary.strings['i.pipeMainDesc'],
+                    dictionary.strings['i.pipeNightDesc'],
+                ]);
             }
         );
     });

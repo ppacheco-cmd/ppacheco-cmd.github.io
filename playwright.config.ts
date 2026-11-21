@@ -54,5 +54,25 @@ export default defineConfig({
                 viewport: { width: 1280, height: 800 },
             },
         },
+
+        /* Other engines: only when CROSS_BROWSER is set (the overnight run) */
+        ...(process.env.CROSS_BROWSER
+            ? [
+                  {
+                      name: 'firefox',
+                      use: {
+                          ...devices['Desktop Firefox'],
+                          viewport: { width: 1280, height: 800 },
+                      },
+                  },
+                  {
+                      name: 'webkit',
+                      use: {
+                          ...devices['Desktop Safari'],
+                          viewport: { width: 1280, height: 800 },
+                      },
+                  },
+              ]
+            : []),
     ],
 });

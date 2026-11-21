@@ -7,7 +7,7 @@ import { HomeText, SiteRoutes } from '../../enums/site/site';
 import { TestIds } from '../../enums/site/help';
 import { PageTestIds } from '../../enums/site/resume';
 import { I18nTestIds } from '../../enums/site/i18n';
-import { ProjectTestIds } from '../../enums/site/projects';
+import { PipelineTestIds, ProjectTestIds } from '../../enums/site/projects';
 import { AnswerLimits, AskUi } from '../../enums/site/ask';
 import {
     ContactIcons,
@@ -132,6 +132,22 @@ export class HomePage {
 
     get projectTagList(): Locator {
         return this.projectCard.getByRole('list');
+    }
+
+    get pipelinesHeading(): Locator {
+        return this.page.getByTestId(PipelineTestIds.TITLE);
+    }
+
+    get pipelineItems(): Locator {
+        return this.page
+            .getByTestId(PipelineTestIds.LIST)
+            .getByRole('listitem');
+    }
+
+    get pipelineNames(): Locator {
+        return this.page
+            .getByTestId(PipelineTestIds.LIST)
+            .getByRole('heading', { level: 4 });
     }
 
     get projectLink(): Locator {

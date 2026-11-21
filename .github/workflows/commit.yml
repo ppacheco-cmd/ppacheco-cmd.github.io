@@ -1,0 +1,87 @@
+name: Every commit
+
+# Fast feedback on every commit pushed to a branch (main has its own pipeline):
+#   1. static checks: ESLint, Prettier, TypeScript and the framework's rule scan
+#   2. the @smoke tests (core behaviour) and the @sanity tests (translation data)
+# The full regression suite runs when the work is merged (see merge-to-main.yml).
+
+on:
+    push:
+        branches-ignore: [main]
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: commit-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    static-checks:
+        name: Lint, types and rules
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v7
+
+            - uses: actions/setup-node@v7
+              with:
+                  node-version: 22
+                  cache: npm
+
+            - run: npm ci --prefer-offline
+
+            - name: ESLint (zero warnings)
+              run: npm run lint
+
+            - name: Prettier
+              run: npx prettier --check .
+
+            - name: TypeScript
+              run: npx tsc --noEmit
+
+            - name: Constitution scan over all TypeScript
+              run: git ls-files -z -- '*.ts' | xargs -0 python3 .claude/scripts/enforce_constitution.py --scan
+
+            - name: Test runner matches @playwright/test and collects the suite
+              run: |
+                  set -euo pipefail
+                  runner="$(node -p "require('./node_modules/@playwright/test/package.json').version")"
+                  hoisted="$(node -p "require('./node_modules/playwright/package.json').version")"
+                  echo "@playwright/test ${runner}, node_modules/playwright ${hoisted}"
+                  [ "${runner}" = "${hoisted}" ] || { echo "::error::playwright is ${hoisted}, not the runner's ${runner}"; exit 1; }
+                  npx playwright test --list | tail -1
+
+    fast-tests:
+        name: Smoke and data tests
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        steps:
+            - uses: actions/checkout@v7
+
+            - uses: actions/setup-node@v7
+              with:
+                  node-version: 22
+                  cache: npm
+
+            - run: npm ci --prefer-offline
+
+            - name: Point the tests at the local server
+              run: cp env/.env.example env/.env.dev
+
+            - name: Install Chromium
+              run: npx playwright install --with-deps chromium
+
+            - name: '@smoke tests'
+              run: npm run test:smoke
+
+            - name: '@sanity tests (translation data)'
+              run: npm run test:sanity
+
+            - uses: actions/upload-artifact@v7
+              if: failure()
+              with:
+                  name: playwright-report-commit
+                  path: playwright-report/
+                  retention-days: 7

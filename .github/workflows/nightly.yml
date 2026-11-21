@@ -1,0 +1,114 @@
+name: Overnight
+
+# Runs every night at 03:00 UTC (and on demand). It checks things a commit
+# cannot: the DEPLOYED site, and other browser engines.
+#   1. the full suite against the live site
+#   2. the Lighthouse gate against the live site
+#   3. the @smoke tests in Firefox and WebKit
+# GitHub emails the repository owner when a scheduled run fails.
+
+on:
+    schedule:
+        - cron: '0 3 * * *'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+env:
+    LIVE_URL: https://ppacheco-cmd.github.io
+
+jobs:
+    live-site:
+        name: Full suite against the live site
+        runs-on: ubuntu-latest
+        timeout-minutes: 40
+        steps:
+            - uses: actions/checkout@v7
+
+            - uses: actions/setup-node@v7
+              with:
+                  node-version: 22
+                  cache: npm
+
+            - run: npm ci --prefer-offline
+
+            - name: Point the tests at the live site
+              run: echo "APP_URL=${LIVE_URL}" > env/.env.live
+
+            - name: Install Chromium
+              run: npx playwright install --with-deps chromium
+
+            - name: All tests, against the live site
+              run: npx playwright test --project=chromium
+              env:
+                  ENVIRONMENT: live
+
+            - uses: actions/upload-artifact@v7
+              if: failure()
+              with:
+                  name: playwright-report-live
+                  path: playwright-report/
+                  retention-days: 7
+
+    live-lighthouse:
+        name: Lighthouse against the live site
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        steps:
+            - uses: actions/checkout@v7
+
+            - uses: actions/setup-node@v7
+              with:
+                  node-version: 22
+                  cache: npm
+
+            - run: npm ci --prefer-offline
+
+            - name: Lighthouse on the deployed pages
+              run: npm run lighthouse
+              env:
+                  LH_BASE: ${{ env.LIVE_URL }}
+
+            - uses: actions/upload-artifact@v7
+              if: always()
+              with:
+                  name: lighthouse-reports-live
+                  path: lighthouse-reports/
+                  retention-days: 7
+
+    cross-browser:
+        name: Smoke tests in ${{ matrix.browser }}
+        runs-on: ubuntu-latest
+        timeout-minutes: 20
+        strategy:
+            fail-fast: false
+            matrix:
+                browser: [firefox, webkit]
+        steps:
+            - uses: actions/checkout@v7
+
+            - uses: actions/setup-node@v7
+              with:
+                  node-version: 22
+                  cache: npm
+
+            - run: npm ci --prefer-offline
+
+            - name: Point the tests at the local server
+              run: cp env/.env.example env/.env.dev
+
+            - name: Install ${{ matrix.browser }}
+              run: npx playwright install --with-deps ${{ matrix.browser }}
+
+            - name: '@smoke tests'
+              run: npx playwright test --project=${{ matrix.browser }} --grep @smoke
+              env:
+                  CROSS_BROWSER: '1'
+
+            - uses: actions/upload-artifact@v7
+              if: failure()
+              with:
+                  name: playwright-report-${{ matrix.browser }}
+                  path: playwright-report/
+                  retention-days: 7

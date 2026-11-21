@@ -113,6 +113,23 @@
           </ul>
           <p class="project-more"><a href="https://github.com/ppacheco-cmd/ppacheco-cmd.github.io" target="_blank" rel="noopener noreferrer" data-testid="project-link" data-i18n="i.projLink">View the code on GitHub</a></p>
         </article>
+
+        <h3 class="pipes-title" data-testid="pipelines-title" data-i18n="i.pipeTitle">How the tests run</h3>
+        <p class="projects-sub" data-i18n="i.pipeIntro">Three pipelines on GitHub Actions, each with its own job.</p>
+        <ol class="pipelines" data-testid="pipelines">
+          <li class="pipeline">
+            <h4 data-i18n="i.pipeCommitName">Every commit</h4>
+            <p data-i18n="i.pipeCommitDesc">Fast feedback: ESLint, Prettier, TypeScript and a rule scan, then the smoke tests and the translation-data checks.</p>
+          </li>
+          <li class="pipeline">
+            <h4 data-i18n="i.pipeMainName">Every merge to main</h4>
+            <p data-i18n="i.pipeMainDesc">The full suite (smoke, data and regression tests) and a Lighthouse quality gate on four pages, in mobile and desktop mode.</p>
+          </li>
+          <li class="pipeline">
+            <h4 data-i18n="i.pipeNightName">Every night</h4>
+            <p data-i18n="i.pipeNightDesc">The full suite and a Lighthouse run against the live site, and the smoke tests in Firefox and WebKit.</p>
+          </li>
+        </ol>
       </div>
     </section>
   </main>

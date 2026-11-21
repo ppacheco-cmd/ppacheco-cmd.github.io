@@ -1,0 +1,70 @@
+name: Merge to main
+
+# Runs on every merge to main:
+#   1. the full suite: @smoke, @sanity and @regression, in Chromium
+#   2. the Lighthouse quality gate on four pages, in mobile and desktop mode
+# GitHub Pages deploys main automatically; these checks run alongside the
+# deployment and tell me straight away if the merge broke something.
+
+on:
+    push:
+        branches: [main]
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    full-suite:
+        name: Full test suite
+        runs-on: ubuntu-latest
+        timeout-minutes: 30
+        steps:
+            - uses: actions/checkout@v7
+
+            - uses: actions/setup-node@v7
+              with:
+                  node-version: 22
+                  cache: npm
+
+            - run: npm ci --prefer-offline
+
+            - name: Point the tests at the local server
+              run: cp env/.env.example env/.env.dev
+
+            - name: Install Chromium
+              run: npx playwright install --with-deps chromium
+
+            - name: All tests
+              run: npm run test:ci
+
+            - uses: actions/upload-artifact@v7
+              if: failure()
+              with:
+                  name: playwright-report-main
+                  path: playwright-report/
+                  retention-days: 7
+
+    lighthouse:
+        name: Lighthouse gate
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        steps:
+            - uses: actions/checkout@v7
+
+            - uses: actions/setup-node@v7
+              with:
+                  node-version: 22
+                  cache: npm
+
+            - run: npm ci --prefer-offline
+
+            - name: Lighthouse (performance, accessibility, best practices, SEO)
+              run: npm run lighthouse
+
+            - uses: actions/upload-artifact@v7
+              if: always()
+              with:
+                  name: lighthouse-reports-main
+                  path: lighthouse-reports/
+                  retention-days: 7
