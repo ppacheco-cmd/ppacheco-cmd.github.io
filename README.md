@@ -1,4 +1,4 @@
-# Paulo Pacheco · QA Engineer
+# Paulo Pacheco
 
 **Live site: [ppacheco-cmd.github.io](https://ppacheco-cmd.github.io)**
 
@@ -93,6 +93,4 @@ reads oddly, an issue or pull request is very welcome.
 The site's code and text are mine. The Figtree font is © its authors, under the
 [SIL Open Font License 1.1](assets/fonts/Figtree-OFL.txt).
 
----
 
-_Hiring for QA? The résumé is [right here](https://ppacheco-cmd.github.io/resume.html), and I'm easy to reach through the links on the home page._
