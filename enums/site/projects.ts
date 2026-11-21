@@ -119,3 +119,16 @@ export const PipelineFacts = {
 export enum PipelineNumbers {
     LIGHTHOUSE_PAGES = 4,
 }
+
+/** The CV file people download, and what it must (not) contain */
+export const CvPdfRules = {
+    FILE: 'cv/PauloPacheco_CV.pdf',
+    PAGES: 2,
+    /** Claims that were removed from the CV on purpose and must not come back */
+    REMOVED_CLAIMS: [
+        '15%',
+        '60%',
+        'real-world evidence context',
+        'a third to format',
+    ],
+} as const;
