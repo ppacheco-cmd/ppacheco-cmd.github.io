@@ -29,7 +29,8 @@ if (!process.env.LH_BASE && !(await serverUp())) {
 }
 
 mkdirSync('lighthouse-reports', { recursive: true });
-const chrome = await chromeLauncher.launch({ chromeFlags: ['--headless=new'] });
+// GitHub's runners need --no-sandbox; locally the sandbox stays on
+const chrome = await chromeLauncher.launch({ chromeFlags: ['--headless=new', ...(process.env.CI ? ['--no-sandbox'] : [])] });
 const rows = [];
 let failed = false;
 

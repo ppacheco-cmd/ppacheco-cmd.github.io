@@ -7,6 +7,7 @@ import { HomeText, SiteRoutes } from '../../enums/site/site';
 import { TestIds } from '../../enums/site/help';
 import { PageTestIds } from '../../enums/site/resume';
 import { I18nTestIds } from '../../enums/site/i18n';
+import { PipelineTestIds, ProjectTestIds } from '../../enums/site/projects';
 import { AnswerLimits, AskUi } from '../../enums/site/ask';
 import {
     ContactIcons,
@@ -58,7 +59,10 @@ export class HomePage {
     }
 
     get gitHubLink(): Locator {
-        return this.page.getByRole('link', { name: ContentLinks.GITHUB_NAME });
+        return this.page.getByRole('link', {
+            name: ContentLinks.GITHUB_NAME,
+            exact: true,
+        });
     }
 
     get linkedInIcon(): Locator {
@@ -104,6 +108,50 @@ export class HomePage {
         return this.page
             .getByRole('group', { name: HomeText.QUESTIONS_GROUP })
             .getByRole('button', { pressed: true });
+    }
+
+    get projectsSection(): Locator {
+        return this.page.getByTestId(ProjectTestIds.SECTION);
+    }
+
+    get projectsHeading(): Locator {
+        return this.projectsSection.getByRole('heading', { level: 2 });
+    }
+
+    get projectCard(): Locator {
+        return this.page.getByTestId(ProjectTestIds.CARD);
+    }
+
+    get projectName(): Locator {
+        return this.projectCard.getByRole('heading', { level: 3 });
+    }
+
+    get projectTags(): Locator {
+        return this.projectCard.getByRole('listitem');
+    }
+
+    get projectTagList(): Locator {
+        return this.projectCard.getByRole('list');
+    }
+
+    get pipelinesHeading(): Locator {
+        return this.page.getByTestId(PipelineTestIds.TITLE);
+    }
+
+    get pipelineItems(): Locator {
+        return this.page
+            .getByTestId(PipelineTestIds.LIST)
+            .getByRole('listitem');
+    }
+
+    get pipelineNames(): Locator {
+        return this.page
+            .getByTestId(PipelineTestIds.LIST)
+            .getByRole('heading', { level: 4 });
+    }
+
+    get projectLink(): Locator {
+        return this.projectCard.getByRole('link');
     }
 
     get questionChips(): Locator {
@@ -403,6 +451,35 @@ export class HomePage {
                 ContactIcons.MIN_TAP_HEIGHT
             );
         }
+    }
+
+    /**
+     * Verifies the Projects section comes after the questions section.
+     *
+     * @returns {Promise<void>}
+     */
+    async projectsComeAfterQuestionsAndVerify(): Promise<void> {
+        const questions = await this.askHeading.boundingBox();
+        const projects = await this.projectsHeading.boundingBox();
+        expect(questions).not.toBeNull();
+        expect(projects).not.toBeNull();
+        if (!questions || !projects) return;
+        expect(projects.y).toBeGreaterThan(questions.y);
+    }
+
+    /**
+     * Verifies the project card stays inside the viewport width.
+     *
+     * @returns {Promise<void>}
+     */
+    async projectCardFitsViewportAndVerify(): Promise<void> {
+        const box = await this.projectCard.boundingBox();
+        const viewport = this.page.viewportSize();
+        expect(box).not.toBeNull();
+        expect(viewport).not.toBeNull();
+        if (!box || !viewport) return;
+        expect(box.x).toBeGreaterThanOrEqual(0);
+        expect(box.x + box.width).toBeLessThanOrEqual(viewport.width);
     }
 
     /**

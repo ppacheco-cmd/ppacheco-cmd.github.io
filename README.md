@@ -42,6 +42,19 @@ npm run check         # lint + tests + Lighthouse gate
 Serve it over HTTP, as above. Opening `index.html` straight from disk can't do the save-only
 download, because browsers block `fetch` on `file://`.
 
+## Pipelines
+
+Three GitHub Actions pipelines, each with its own job:
+
+| When                               | What runs                                                                                         | Workflow                       |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------ |
+| Every commit (any branch but main) | ESLint, Prettier, TypeScript and the rule scan, then the `@smoke` and `@sanity` tests             | `.github/workflows/commit.yml` |
+| Every merge to main                | The full suite, and the Lighthouse gate on four pages in mobile and desktop mode                  | `merge-to-main.yml`            |
+| Every night (03:00 UTC)            | The full suite and Lighthouse against the live site, and the `@smoke` tests in Firefox and WebKit | `nightly.yml`                  |
+
+Run the cross-browser smoke tests yourself with `CROSS_BROWSER=1 npx playwright test --project=firefox --grep @smoke`.
+A data test reads these workflow files, so the home page cannot claim more than they actually run.
+
 ## How it's put together
 
 ```
@@ -88,5 +101,3 @@ reads oddly, an issue or pull request is very welcome.
 
 The site's code and text are mine. The Figtree font is © its authors, under the
 [SIL Open Font License 1.1](assets/fonts/Figtree-OFL.txt).
-
-
