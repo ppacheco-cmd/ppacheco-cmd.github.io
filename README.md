@@ -1,12 +1,8 @@
-# Paulo Pacheco · QA Engineer
+# Paulo Pacheco
 
 **Live site: [ppacheco-cmd.github.io](https://ppacheco-cmd.github.io)**
 
-A QA engineer's personal site, built the way a QA engineer would build it: small, fast,
-accessible, and **tested like it matters**.
-
-No framework. No build step. No tracking. Just HTML, CSS and a little vanilla JavaScript,
-guarded by 272 automated tests.
+A QA engineer's personal site: small, fast, accessible, and **tested**.
 
 ---
 
@@ -93,6 +89,4 @@ reads oddly, an issue or pull request is very welcome.
 The site's code and text are mine. The Figtree font is © its authors, under the
 [SIL Open Font License 1.1](assets/fonts/Figtree-OFL.txt).
 
----
 
-_Hiring for QA? The résumé is [right here](https://ppacheco-cmd.github.io/resume.html), and I'm easy to reach through the links on the home page._
